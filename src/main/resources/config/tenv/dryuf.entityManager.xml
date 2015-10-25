@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jdbc		http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/tx		http://www.springframework.org/schema/tx/spring-tx.xsd
+	">
+
+	<context:annotation-config />
+	<context:spring-configured />
+
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+
+	<tx:annotation-driven transaction-manager="transactionManager-dryuf"/>
+
+	<bean id="dryufExceptionTranslatorDao" class="${dryuf.jpa.exceptionTranslator}" />
+	<bean id="dryufExceptionTranslatorSpring" class="net.dryuf.dao.spring.SpringDaoExceptionTranslatorAdapter"
+		p:translator-ref="dryufExceptionTranslatorDao"
+		/>
+
+	<bean id="entityManagerFactory-dryuf"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+		p:persistenceXmlLocation="classpath:META-INF/persistence.xml"
+		p:dataSource-ref="javax.sql.DataSource-dryuf" p:persistenceUnitName="dryuf">
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+				<property name="databasePlatform" value="${dryuf.jpa.dialect}"></property>
+			</bean>
+		</property>
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.show_sql">${dryuf.jpa.show_sql}</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="transactionManager-dryuf" class="org.springframework.orm.jpa.JpaTransactionManager"
+		p:entityManagerFactory-ref="entityManagerFactory-dryuf">
+		<qualifier value="dryuf" />
+	</bean>
+	<bean id="net.dryuf.transaction.TransactionManager-dryuf" class="net.dryuf.dao.spring.SpringTransactionManager"
+		p:springTransactionManager-ref="transactionManager-dryuf"
+		p:name="net.dryuf.transaction.TransactionManager-dryuf"
+		/>
+
+</beans>

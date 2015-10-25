@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jdbc		http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
+		http://www.springframework.org/schema/tx		http://www.springframework.org/schema/tx/spring-tx.xsd
+	">
+
+	<bean id="testMainDao" class="net.dryuf.tenv.jpadao.TestMainDaoJpa" autowire="byName" />
+	<bean id="testChildDao" class="net.dryuf.tenv.jpadao.TestChildDaoJpa" autowire="byName" />
+	<bean id="genericDryufDao" class="net.dryuf.dao.test.data.dao.jpa.GenericDryufDaoJpa" autowire="byName" />
+	<bean id="testEntDao" class="net.dryuf.dao.test.data.dao.jpa.TestEntDaoJpa" autowire="byName" />
+
+	<bean id="dbConfigProfileDao" class="net.dryuf.config.jpadao.DbConfigProfileDaoJpa" autowire="byName" />
+	<bean id="dbConfigSectionDao" class="net.dryuf.config.jpadao.DbConfigSectionDaoJpa" autowire="byName" />
+	<bean id="dbConfigEntryDao" class="net.dryuf.config.jpadao.DbConfigEntryDaoJpa" autowire="byName" />
+
+	<bean id="appDomainDefDao" class="net.dryuf.security.jpadao.AppDomainDefDaoJpa" autowire="byName" />
+	<bean id="appDomainAliasDao" class="net.dryuf.security.jpadao.AppDomainAliasDaoJpa" autowire="byName" />
+	<bean id="userAccountDao" class="net.dryuf.security.jpadao.UserAccountDaoJpa" autowire="byName" />
+	<bean id="userLoginRecordDao" class="net.dryuf.security.jpadao.UserLoginRecordDaoJpa" autowire="byName" />
+	<bean id="userAccountDomainDao" class="net.dryuf.security.jpadao.UserAccountDomainDaoJpa" autowire="byName" />
+	<bean id="userAccountDomainRoleDao" class="net.dryuf.security.jpadao.UserAccountDomainRoleDaoJpa" autowire="byName" />
+	<bean id="userAccountDomainGroupDao" class="net.dryuf.security.jpadao.UserAccountDomainGroupDaoJpa" autowire="byName" />
+
+</beans>

@@ -1,0 +1,28 @@
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/security		http://www.springframework.org/schema/security/spring-security.xsd
+	">
+
+	<bean id="saltSource" class="org.springframework.security.authentication.dao.ReflectionSaltSource" >
+		<property name="userPropertyToUse" value="username" />
+	</bean>
+
+	<bean id="passwordEncoder" class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+		<constructor-arg value="256"/>
+	</bean>
+
+	<security:authentication-manager>
+		<security:authentication-provider user-service-ref="serviceUserAccount">
+			<security:password-encoder ref="passwordEncoder">
+				<security:salt-source ref="saltSource"/>
+			</security:password-encoder>
+		</security:authentication-provider>
+	</security:authentication-manager>
+
+	<bean id="serviceUserAccount" class="net.dryuf.security.UserAccountDetailsService" />
+
+</beans>
