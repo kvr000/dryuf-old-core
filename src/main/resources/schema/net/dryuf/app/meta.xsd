@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://dryuf.org/schema/net/dryuf/app/meta/">
+	<xs:element name="meta">
+		<!-- TODO -->
+	</xs:element>
+</xs:schema>

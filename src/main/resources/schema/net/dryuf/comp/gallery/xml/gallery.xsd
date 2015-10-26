@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://dryuf.org/schema/net/dryuf/comp/gallery/xml/gallery/">
+	<xs:element name="gallery">
+		<xs:annotation>
+			<xs:documentation>List gallery sections.</xs:documentation>
+		</xs:annotation>
+		<!-- <xs:attributeGroup ref="sections.attlist"/> -->
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="locations" minOccurs="1" maxOccurs="1">
+					<xs:annotation><xs:documentation>Gallery Locations</xs:documentation></xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="location" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="id" type="xs:string" />
+									<xs:attribute name="store" type="xs:string" />
+									<xs:attribute name="thumb" type="xs:string" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="sections" minOccurs="1" maxOccurs="1">
+					<xs:annotation><xs:documentation>Gallery Sections</xs:documentation></xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="section" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="title" type="xs:string" />
+										<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />
+										<xs:element name="records" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element minOccurs="0" maxOccurs="unbounded" name="record">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="title" type="xs:string" minOccurs="0" maxOccurs="1" />
+																<xs:element name="description" type="xs:string" minOccurs="0" maxOccurs="1" />
+																<xs:element name="sources" minOccurs="0" maxOccurs="1">
+																	<xs:complexType>
+																		<xs:sequence>
+																			<xs:element minOccurs="1" maxOccurs="unbounded" name="source">
+																				<xs:complexType>
+																					<xs:attribute name="file" />
+																					<xs:attribute name="mimeType" />
+																				</xs:complexType>
+																			</xs:element>
+																		</xs:sequence>
+																	</xs:complexType>
+																</xs:element>
+															</xs:sequence>
+															<xs:attribute name="recordType" use="optional">
+																<xs:simpleType>
+																	<xs:restriction base="xs:string">
+																		<xs:enumeration value="picture"/>
+																		<xs:enumeration value="video"/>
+																	</xs:restriction>
+																</xs:simpleType>
+															</xs:attribute>
+															<xs:attribute name="file" />
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="id" />
+									<xs:attribute name="location" />
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="multi" />
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

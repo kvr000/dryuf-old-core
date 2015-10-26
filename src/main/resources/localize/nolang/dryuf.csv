@@ -1,0 +1,229 @@
+C,W,nolang,en,cs
+,,,,
+,net.dryuf.comp.forum.form.GuestbookForm,name,Name,Jméno
+,net.dryuf.comp.forum.form.GuestbookForm,email,E-Mail,E-mail
+,net.dryuf.comp.forum.form.GuestbookForm,webpage,Web page,Web stránky
+,net.dryuf.comp.forum.form.GuestbookForm,antispam,Anti-spam,Ochrana proti spamu
+,net.dryuf.comp.forum.form.GuestbookForm,content,Message,Vzkaz
+,net.dryuf.comp.forum.form.GuestbookForm,add,Add,Přidat
+,net.dryuf.comp.forum.form.GuestbookForm,Wrong antispam code,Wrong antispam code,Nesprávný anti-spam kód
+,net.dryuf.comp.forum.form.GuestbookForm,captcha,Anti-spam code,Anti-spam kód
+,,,,
+,net.dryuf.comp.forum.form.SimpleForumForm,add,Add message,Přidat zprávu
+,net.dryuf.comp.forum.form.SimpleForumForm,content,Content,Obsah
+,net.dryuf.comp.forum.mvp.SimpleForumPresenter,You need to --login-- to post messages.,You need to --login-- to post messages.,Musíte se --přihlásit-- pro posílání zpráv.
+,net.dryuf.comp.forum.mvp.SimpleForumPresenter,You need to --login-- to see messages.,You need to --login-- to see messages.,Musíte se –přihlásit-- pro zobrazení zpráv.
+,net.dryuf.comp.forum.mvp.SimpleForumPresenter,No comments have been added yet.,No comments have been added yet.,Žádné komentáře nebyly zatím přidány.
+,,,,
+,net.dryuf.comp.gallery.mvp.GallerySectionRecordPresenter,Next,Next,Další
+,net.dryuf.comp.gallery.mvp.GallerySectionRecordPresenter,Previous,Previous,Předchozí
+,net.dryuf.comp.gallery.mvp.GallerySectionRecordPresenter,Album,Album,Album
+,net.dryuf.comp.gallery.mvp.GallerySectionRecordPresenter,Image,Image,Obrázek
+,net.dryuf.comp.gallery.mvp.GalleryPresenter,"Requested gallery not found, please go back to <a href=""../"">gallery list</a>","Requested gallery not found, please go back to <a href=""../"">gallery list</a>","Požadovaná galerie neexistuje, vraťte se prosím do <a href=""../"">seznamu galerií</a>"
+,net.dryuf.comp.gallery.mvp.GalleryPresenter,"Requested picture not found, please go back to <a href=""./"">gallery section</a>","Requested picture not found, please go back to <a href=""./"">gallery section</a>","Požadovaný obrázek neexistuje, vraťte se prosím do <a href=""./"">galerie</a>"
+,net.dryuf.comp.gallery.mvp.GallerySectionPresenter,Back to gallery,Back to gallery,Zpět do galerie
+,net.dryuf.comp.gallery.mvp.GallerySectionPresenter,Image,Image,Obrázek
+,,,,
+,net.dryuf.comp.gallery.form.GalleryAddForm,title,Title,Název
+,net.dryuf.comp.gallery.form.GalleryAddForm,description,Description,Popis
+,net.dryuf.comp.gallery.form.GalleryAddForm,picture,Picture,Obrázek
+,net.dryuf.comp.gallery.form.GalleryAddForm,add,Add,Přidat
+,,,,
+,net.dryuf.comp.poll.mvp.PollPresenter,Poll,Poll,Hlasování
+,net.dryuf.comp.poll.mvp.PollPresenter,Total votes,Total votes,Počet hlasů
+,net.dryuf.comp.poll.mvp.PollPresenter,For polling you need to --login--.,For polling you need to --login--.,Pro hlasování se musíte --přihlásit--.
+,,,,
+,net.dryuf.comp.rating.mvp.RatingPresenter,Login to rate,Login to rate,Přihlašte se k hodnocení
+,net.dryuf.comp.rating.mvp.RatingPresenter,Rate here,Rate here,Hodnoťte
+,,,,
+,net.dryuf.comp.wedding.mvp.WeddingGiftsListPresenter,Available,Available,Volné
+,net.dryuf.comp.wedding.mvp.WeddingGiftsListPresenter,Reserve,Reserve,Rezervovat
+,net.dryuf.comp.wedding.mvp.WeddingGiftsListPresenter,Reserved,Reserved,Rezervováno
+,net.dryuf.comp.wedding.mvp.WeddingGiftsListPresenter,Cancel,Cancel,Zrušit
+,net.dryuf.comp.wedding.mvp.WeddingGiftsListPresenter,Name,Name,Název
+,net.dryuf.comp.wedding.mvp.WeddingGiftsListPresenter,Description,Description,Popis
+,net.dryuf.comp.wedding.mvp.WeddingGiftsListPresenter,State,State,Stav
+,net.dryuf.comp.wedding.mvp.WeddingGiftsListPresenter,Inspiration,Inspiration,Inspirace
+,net.dryuf.comp.wedding.mvp.WeddingGiftsListPresenter,Proposal,Proposal,Návrh
+,net.dryuf.comp.wedding.mvp.WeddingGiftsListPresenter,Proposal according to your ideas.,Proposal according to your ideas.,Návrh podle vašich nápadů.
+,net.dryuf.comp.wedding.mvp.WeddingGiftsListPresenter,Propose,Propose,Navrhnout
+,net.dryuf.comp.wedding.mvp.WeddingGiftsListPresenter,"In case of questions please contact our <a href=""coordinator.html"">gift coordinator</a>.","In case of questions please contact our <a href=""coordinator.html"">gift coordinator</a>.","Máte-li otázky, kontaktujte prosím našeho <a href=""coordinator.html"">dárkového koordinátora</a>."
+,,,,
+,net.dryuf.comp.wedding.form.WeddingGiftsReserveForm,email,E-mail,E-mail
+,net.dryuf.comp.wedding.form.WeddingGiftsReserveForm,emailConfirm,E-mail (confirm),E-mail (ověření)
+,net.dryuf.comp.wedding.form.WeddingGiftsReserveForm,reserve,Reserve,Rezervovat
+,,,,
+,net.dryuf.comp.wedding.mvp.WeddingGiftsReservePresenter,"Your gift has been successfully reserved, we're looking forward to it :-)","Your gift has been successfully reserved, we're looking forward to it :-)","Dárek byl rezervován, těšíme se na něj :-)"
+,net.dryuf.comp.wedding.mvp.WeddingGiftsReservePresenter,Your reservation code is %s,Your reservation code is %s,Rezervační kód je %s
+,net.dryuf.comp.wedding.mvp.WeddingGiftsReservePresenter,"Please go back to <a href="".."">wedding gifts list</a> and reserve one more :-)","Please go back to <a href="".."">gifts list</a> and reserve one more :-)","Běžte prosím zpátky na <a href="".."">seznam dárků</a> a rezervujte další :-)"
+,net.dryuf.comp.wedding.mvp.WeddingGiftsReservePresenter,"Your has gift reservation failed, probably someone reserved in the meantime","Your has gift reservation failed, probably someone reserved in the meantime","Rezervace dárku selhala, nejspíš byl v mezičase rezervován někým jiným"
+,net.dryuf.comp.wedding.mvp.WeddingGiftsReservePresenter,"We use your E-mail address only for sending the reservation code, we like surprise :-)","We use your E-mail address only for sending the reservation code, we like surprise :-)","E-mailovou adresu používáme pouze pro odeslání rezervačního kódu, máme rádi překvapení :-)"
+,net.dryuf.comp.wedding.mvp.WeddingGiftsReservePresenter,Wedding Gift Reservation,Gift Reservation,Svatební dar – rezervace
+,net.dryuf.comp.wedding.mvp.WeddingGiftsReservePresenter,Your reservation code is %s.,Your reservation code is %s.,Rezervační kód je %s.
+,net.dryuf.comp.wedding.mvp.WeddingGiftsReservePresenter,Your Gift has been successfully reserved.,Your Gift has been successfully reserved.,Dar byl úspěšně rezervován.
+,,,,
+,net.dryuf.comp.wedding.form.WeddingGiftsCancelForm,reservedCode,Reservation code,Rezervační kód
+,net.dryuf.comp.wedding.form.WeddingGiftsCancelForm,cancelReservation,Cancel reservation,Zrušit rezervaci
+,net.dryuf.comp.wedding.mvp.WeddingGiftsCancelPresenter,Your gift reservation has been successfully cancelled :-(,Your gift reservation has been successfully cancelled :-(,Rezervace dárku byla úspěšně zrušena :-(
+,net.dryuf.comp.wedding.mvp.WeddingGiftsCancelPresenter,"Please go back to <a href="".."">wedding gifts list</a> and reserve different one :-)","Please go back to <a href="".."">gifts list</a> and reserve different one :-)","Běžte prosím zpátky na <a href="".."">seznam dárků</a> a rezervujte jiný :-)"
+,net.dryuf.comp.wedding.mvp.WeddingGiftsCancelPresenter,"Your gift reservation cancellation failed, probably wrong code specified","Your gift reservation cancellation failed, probably wrong code specified","Rezervace dárku selhala, nejspíš byl zadán špatný kód"
+,,,,
+,net.dryuf.comp.wedding.form.WeddingGiftsProposeForm,yourEmail,Contact E-mail,Kontaktní E-mail
+,net.dryuf.comp.wedding.form.WeddingGiftsProposeForm,description,Proposal,Návrh
+,net.dryuf.comp.wedding.form.WeddingGiftsProposeForm,propose,Send the proposal,Odeslat návrh
+,net.dryuf.comp.wedding.mvp.WeddingGiftsProposePresenter,Your proposal will be sent to our coordinator and you will receive response to your e-mail.,Your proposal will be sent to our coordinator and you will receive response to your e-mail.,Návrh bude odeslán našemu koordinátorovi a odpověď dostanete na svůj e-mail.
+,net.dryuf.comp.wedding.mvp.WeddingGiftsProposePresenter,Your proposal has been sent to our coordinator. Thank you!,Your proposal has been sent to our coordinator. Thank you!,"Návrh byl úspěšně odeslán našemu koordinátorovi, děkujeme!"
+,net.dryuf.comp.wedding.mvp.WeddingGiftsProposePresenter,"Please go back to <a href="".."">wedding gifts list</a> and reserve different one :-)","Please go back to <a href="".."">gifts list</a> and reserve different one :-)","Běžte prosím zpátky na <a href="".."">seznam dárků</a> a rezervujte jiný :-)"
+,net.dryuf.comp.wedding.mvp.WeddingGiftsProposePresenter,gives a proposal for wedding gift:,gives a proposal for gift:,dává návrh na dárek:
+,net.dryuf.comp.wedding.mvp.WeddingGiftsProposePresenter,"Please go back to <a href=""."">wedding gifts list</a>.","Please go back to <a href=""."">gifts list</a>.","Vraťte se prosím zpátky na <a href=""."">seznam darů</a>."
+,,,,
+,net.dryuf.comp.wedding.form.WeddingGiftsCoordinatorForm,yourEmail,Contact E-mail,Kontaktní E-mail
+,net.dryuf.comp.wedding.form.WeddingGiftsCoordinatorForm,description,Question,Dotaz
+,net.dryuf.comp.wedding.form.WeddingGiftsCoordinatorForm,submit,Submit,Odeslat
+,,,,
+,net.dryuf.comp.wedding.mvp.WeddingGiftsCoordinatorPresenter,Your question will be sent to our coordinator and you will receive response to your e-mail.,Your question will be sent to our coordinator and you will receive response to your e-mail.,Vaše otázka bude odeslána našemu koordinátorovi a dostanete co nejdříve odpověd na uvedený e-mail.
+,net.dryuf.comp.wedding.mvp.WeddingGiftsCoordinatorPresenter,Wedding Gift Question,Gift Question,Dotaz ke svatebnímu daru
+,net.dryuf.comp.wedding.mvp.WeddingGiftsCoordinatorPresenter,has a question regarding wedding gift:,has a question regarding gift:,má dotaz ohledně svatebního daru:
+,net.dryuf.comp.wedding.mvp.WeddingGiftsCoordinatorPresenter,Your question has been sent to our coordinator. Thank you!,Your question has been sent to our coordinator. Thank you!,Váš dotaz byl odeslán našemu koordinátorovi. Děkujeme!
+,net.dryuf.comp.wedding.mvp.WeddingGiftsCoordinatorPresenter,"Please go back to <a href=""."">wedding gifts list</a>.","Please go back to <a href=""."">gifts list</a>.","Vraťte se prosím zpátky na <a href=""."">seznam darů</a>."
+,net.dryuf.comp.wedding.mvp.WeddingGiftsCoordinatorPresenter,has a question regarding wedding gift:,has a question regarding gift:,má otázku ohledně daru:
+,,,,
+,net.dryuf.core.Language,cs,Česky,Česky
+,net.dryuf.core.Language,en,English,English
+,,,,
+,net.dryuf.datagrid.DataPresenter,Detail,Detail,Detail
+,net.dryuf.datagrid.DataPresenter,Edit,Edit,Upravit
+,net.dryuf.datagrid.DataPresenter,Remove,Remove,Smazat
+,,,,
+,net.dryuf.datagrid.DataGridPresenter,Loading data...,Loading data...,Stahuji data...
+,net.dryuf.datagrid.DataGridPresenter,Field is mandatory,Field is mandatory,Pole je povinné
+,net.dryuf.datagrid.DataGridPresenter,Refresh,Refresh,Aktualizovat
+,net.dryuf.datagrid.DataGridPresenter,Failed to remove object: ,Failed to remove object: ,Nepodařilo se odstranit objekt
+,net.dryuf.datagrid.Renderer,<,<,<
+,net.dryuf.datagrid.Renderer,>,>,>
+,net.dryuf.datagrid.Renderer,Action,Action,Akce
+,net.dryuf.datagrid.Renderer,black,black,černá
+,net.dryuf.datagrid.Renderer,red,red,červená
+,net.dryuf.datagrid.Renderer,green,green,zelená
+,net.dryuf.datagrid.Renderer,blue,blue,modrá
+,net.dryuf.datagrid.Renderer,dark red,dark red,tmavě červená
+,net.dryuf.datagrid.Renderer,dark green,dark green,tmavě zelená
+,net.dryuf.datagrid.Renderer,dark blue,dark blue,tmavě modrá
+,net.dryuf.datagrid.Renderer,yellow,yellow,žlutá
+,net.dryuf.datagrid.Renderer,pink,pink,růžová
+,net.dryuf.datagrid.Renderer,light purple,light purple,světle fialová
+,net.dryuf.datagrid.Renderer,dark purple,dark purple,tmavě fialová
+,net.dryuf.datagrid.Renderer,white,white,bílá
+,net.dryuf.datagrid.Renderer,turquoise,turquoise,tyrkysová
+,net.dryuf.datagrid.Renderer,light grey,light grey,světle šedá
+,net.dryuf.datagrid.Renderer,dark grey,dark grey,tmavě šedá
+,net.dryuf.datagrid.Renderer,orange,orange,pomerančová
+,net.dryuf.datagrid.Renderer,brown,brown,hnědá
+,net.dryuf.datagrid.Renderer,forest green,forest green,lesní zelená
+,net.dryuf.datagrid.Renderer,grass green,grass green,travnatě zelená
+,net.dryuf.datagrid.Renderer,Send,Send ,Odeslat
+,net.dryuf.datagrid.Renderer,Cancel,Cancel ,Zrušit
+,net.dryuf.datagrid.Renderer,Save,Save,Uložit
+,net.dryuf.datagrid.Renderer,Remove,Remove,Odstranit
+,,,,
+,net.dryuf.mvp.DynamicFormPresenter,Field is mandatory,Field is mandatory,Pole je povinné
+,,,,
+,net.dryuf.mvp.MainHtmlPresenter,Log in,Log in,Přihlásit
+,net.dryuf.mvp.MainHtmlPresenter,Log out,Log out,Odhlásit
+,net.dryuf.mvp.MainXhtmlPresenter,Log in,Log in,Přihlásit
+,net.dryuf.mvp.MainXhtmlPresenter,Log out,Log out,Odhlásit
+,,,,
+,,,,
+,net.dryuf.security.admin.form.AdminRolesForm,guest,guest,guest
+,net.dryuf.security.admin.form.AdminRolesForm,free,free,free
+,net.dryuf.security.admin.form.AdminRolesForm,regular,regular,regular
+,net.dryuf.security.admin.form.AdminRolesForm,user,user,user
+,net.dryuf.security.admin.form.AdminRolesForm,admin,sysadmin,sysadmin
+,net.dryuf.security.admin.form.AdminRolesForm,sysconf,sysconf,sysconf
+,net.dryuf.security.admin.form.AdminRolesForm,translation,translation,translation
+,net.dryuf.security.admin.form.AdminRolesForm,extreme,extreme,extreme
+,net.dryuf.security.admin.form.AdminRolesForm,devel,devel,devel
+,net.dryuf.security.admin.form.AdminRolesForm,timing,timing,timing
+,net.dryuf.security.admin.form.AdminRolesForm,translation_level,translation_level,translation_level
+,net.dryuf.security.admin.form.AdminRolesForm,eff_uid,eff_uid,eff_uid
+,net.dryuf.security.admin.form.AdminRolesForm,eff_username,eff_username,eff_username
+,net.dryuf.security.admin.form.AdminRolesForm,update,Update,Nastavit
+,,,,
+,net.dryuf.security.admin.form.AdminTranslationForm,translation_level,translation_level,translation_level
+,net.dryuf.security.admin.form.AdminTranslationForm,update,Update,Nastavit
+,,,,
+,net.dryuf.security.admin.mvp.AdminMainPresenter,Roles,Roles,Role
+,net.dryuf.security.admin.mvp.AdminMainPresenter,Translation,Translation,Překlady
+,,,,
+,net.dryuf.security.bo.UserAccountBo,Wrong password,Wrong password,Špatné heslo
+,,,,
+,net.dryuf.security.form.LoginForm,password,Password,Heslo
+,net.dryuf.security.form.LoginForm,username,User name,Uživatelské jméno
+,net.dryuf.security.form.LoginForm,Login failed,Login failed,Přihlášení se nepovedlo
+,net.dryuf.security.form.LoginForm,Wrong password,Wrong password,Špatné heslo
+,net.dryuf.security.form.LoginForm,login,Login,Přihlásit
+,net.dryuf.security.form.LoginForm,User not activated,User not activated,Uživatel neaktivován
+,,,,
+,net.dryuf.security.form.ChangePasswordForm,change,Change,Změnit
+,net.dryuf.security.form.ChangePasswordForm,oldPassword,Old password,Staré heslo
+,net.dryuf.security.form.ChangePasswordForm,password,Password,Heslo
+,net.dryuf.security.form.ChangePasswordForm,password2,Password (check),Heslo (ověření)
+,,,,
+,net.dryuf.security.form.ForgotPasswordForm,captcha,Captcha,Kontrolní kód
+,net.dryuf.security.form.ForgotPasswordForm,send,Send ,Odeslat
+,net.dryuf.security.form.ForgotPasswordForm,username,Username,Uživatelské jméno
+,net.dryuf.security.form.ForgotUpdatePasswordForm,password,Password,Heslo
+,net.dryuf.security.form.ForgotUpdatePasswordForm,password2,Password (check),Heslo (ověření)
+,net.dryuf.security.form.ForgotUpdatePasswordForm,update,Update,Nastavit
+,,,,
+,net.dryuf.security.form.RegisterForm,captcha,Captcha,Kontrolní kód
+,net.dryuf.security.form.RegisterForm,email,E-mail,E-mail
+,net.dryuf.security.form.RegisterForm,email2,Email (check),E-mail (ověření)
+,net.dryuf.security.form.RegisterForm,password,Password,Heslo
+,net.dryuf.security.form.RegisterForm,password2,Password (check),Heslo (ověření)
+,net.dryuf.security.form.RegisterForm,register,Register,Registrovat
+,net.dryuf.security.form.RegisterForm,username,User name,Uživatelské jméno
+,net.dryuf.security.form.RegisterForm,firstName,First name,Křestní jméno
+,net.dryuf.security.form.RegisterForm,lastName,Last name,Příjmení
+,net.dryuf.security.form.RegisterForm,phone,Phone,Telefon
+,,,,
+,net.dryuf.security.mvp.CommonForgotPasswordPresenter,User Forgotten Password,User Forgotten Password,Zapomenuté heslo
+,net.dryuf.security.mvp.CommonForgotPasswordPresenter,You asked for changing the user password on our website. Please change it by clicking on,You asked for changing the user password on our website. Please change it by clicking on,You asked for changing the user password on our website. Please change it by clicking on
+,,,,
+,net.dryuf.security.mvp.CommonLoggedPresenter,Administration,Administration,Administrace
+,net.dryuf.security.mvp.CommonLoggedPresenter,You can change password here.,You can change password here.,Můžete změnit heslo zde.
+,net.dryuf.security.mvp.CommonLoggedPresenter,You have been successfully logged in.,You have been successfully loggined in.,Úspěšně jste se přihlásili.
+,,,,
+,net.dryuf.security.mvp.CommonLoginDividerPresenter,Forgot password?,Forgot password?,Zapomenuté heslo?
+,net.dryuf.security.mvp.CommonLoginDividerPresenter,Not registered yet?,Not registered yet?,Dosud neregistrován?
+,net.dryuf.security.mvp.CommonLoginDividerPresenter,Register now.,Register now.,Registrovat teď.
+,net.dryuf.security.mvp.CommonLoginDividerPresenter,register,Register,Registrovat
+,net.dryuf.security.mvp.CommonLoginDividerPresenter,forgotpassword,Forgot password,Zapomenuté heslo
+,,,,
+,net.dryuf.security.mvp.CommonRegisterPresenter,User Registration,User Registration,Uživatelská registrace
+,net.dryuf.security.mvp.CommonRegisterPresenter,You asked for creating the user on our website. Please activate it clicking on,You asked for creating the user on our website. Please activate it clicking on,"Zakládal jste si konto na našem webu, pokračujte prosím kliknutím na"
+,,,,
+,net.dryuf.security.mvp.LoggedPresenter,You can change password here.,You can change password here.,Zde můžete změnit heslo.
+,net.dryuf.security.mvp.LoggedPresenter,You have been successfully logged in.,You have been successfully logged in.,Jste úspěšně přihlášení.
+,,,,
+,net.dryuf.security.mvp.RegisterActivatePresenter,"Activation successful, you can login now","Activation successful, you can login now","Aktivace úspěšná, nyní se můžete přihlásit."
+,net.dryuf.security.mvp.RegisterPresenter,Passwords do not match,Passwords do not match,Hesla si neodpovídají
+,net.dryuf.textual.CaptchaTextual,Incorrect captcha,Incorrect code,Kód neodpovídá
+,,,,
+,net.dryuf.textual.DateTextual,format dd.mm.yyyy hh:mm:ss required,format dd.mm.yyyy hh:mm:ss required,Zadejte datum ve tvaru dd.mm.rrrr hh.mm.ss
+,,,,
+,net.dryuf.textual.EmailTextual,E-mail (name@domain) required,E-mail (name@domain) is mandatory field,Chybný formát emailu (jméno@doména)
+,,,,
+,net.dryuf.textual.FloatTextual,Real number required,"Enter number with , or .",Zadejte číslo s desetinnou čárkou nebo tečkou
+,,,,
+,net.dryuf.textual.ImageFileTextual,"Image file of type png or jpeg expected (suffix jpg, jpeg, png)","Image file of type png or jpeg expected (suffix jpg, jpeg, png)","Očekáván obrázek typu png nebo jpeg (přípona jpg, jpeg, png)"
+,,,,
+,net.dryuf.textual.LongTextual,Number required.,Number required.,Vyžadováno celé číslo.
+,,,,
+,net.dryuf.textual.NaturalTextual,Natural number required,Natural number required,Vyžadováno celé přirozené číslo
+,net.dryuf.textual.NaturalTextual,Natural number required.,Natural number required.,Vyžadováno celé přirozené číslo
+,,,,
+,net.dryuf.textual.PhoneTextual,Phone number required,Phone number required ,Zadejte telefonní číslo
+,net.dryuf.textual.PhoneTextual,Please use international format with 00 or + prefix,"Please use international format with + or 00 prefix, e.g. 00420765123456 ","Použijte mezinárodní formát s 00 či + na začátku, např. 00420789123456 "
+,,,,
+,net.dryuf.textual.WebpageTextual,"Web page (http://x.y.z) required","Web page (http://x.y.z) required","Požadována web stránks (http://x.y.z)"

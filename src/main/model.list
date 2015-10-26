@@ -1,0 +1,23 @@
+#target/_model		net.dryuf.config.DbConfigProfile			entbean daoif daojpa
+
+target/_model		net.dryuf.config.DbConfigProfile			entbean
+target/_model		net.dryuf.config.DbConfigSection			entbean
+target/_model		net.dryuf.config.DbConfigEntry				entbean
+
+target/_model		net.dryuf.political.Country				entbean
+target/_model		net.dryuf.political.Currency				entbean
+
+target/_model		net.dryuf.security.UserAccount				entbean
+target/_model		net.dryuf.security.UserLoginRecord			entbean
+target/_model		net.dryuf.security.AppDomainDef				entbean
+target/_model		net.dryuf.security.AppDomainGroup			entbean
+target/_model		net.dryuf.security.AppDomainGroupRole			entbean
+target/_model		net.dryuf.security.AppDomainRole			entbean
+target/_model		net.dryuf.security.AppDomainAlias			entbean
+target/_model		net.dryuf.security.UserAccountDomain			entbean
+target/_model		net.dryuf.security.UserAccountDomainRole		entbean
+target/_model		net.dryuf.security.UserAccountDomainGroup		entbean
+
+target/_model		net.dryuf.tenv.TestMain					entbean
+target/_model		net.dryuf.tenv.TestChild				entbean
+

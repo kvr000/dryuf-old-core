@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx		http://www.springframework.org/schema/tx/spring-tx.xsd
+	">
+
+	<context:annotation-config />
+	<context:spring-configured />
+
+	<bean id="timeBo" class="net.dryuf.service.time.SysTimeBo" autowire="byName" />
+
+	<bean id="loggerService" class="net.dryuf.service.logger.log4j.Log4jLoggerService" autowire="byName"/>
+
+	<bean id="mimeTypeService" class="net.dryuf.text.mime.MappedMimeTypeService" autowire="byName" />
+
+	<bean id="imageResizeService" class="net.dryuf.service.image.awt.AwtResizeService" autowire="byName" />
+
+	<bean id="captchaService" class="net.dryuf.service.image.kaptcha.KaptchaCaptchaService" autowire="byName" />
+
+	<bean id="userAccountBo" class="net.dryuf.security.bo.DbUserAccountBo" p:appDomainId="dryuf" autowire="byName" />
+
+	<bean id="fileStoreService" class="net.dryuf.service.file.fs.FsFileStoreService" autowire="byName" p:root="${dryuf.projectRoot}_runtime/_store/" />
+
+</beans>

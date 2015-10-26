@@ -1,0 +1,82 @@
+/* Menu styling */
+.menu {
+	font-family:			arial, sans-serif;
+	min-width:			750px;
+	height:				25px;
+	position:			relative;
+	font-size:			11px;
+	z-index:			100;
+
+	ul {
+		padding:			0;
+		margin:				0;
+		list-style:			none;
+		li {
+			float:				left;
+			position:			relative;
+
+			a, a:visited {
+				display:			block;
+				text-decoration:		none;
+				color:				$hidingmenu_focus_color;
+				width:				104px;
+				height:				20px;
+				text-align:			center;
+				color:				$hidingmenu_normal_color;
+				border:				1px solid $hidingmenu_normal_color;
+				background:			$hidingmenu_normal_background;
+				line-height:			20px;
+				font-size:			11px;
+				overflow:			hidden;
+			}
+
+			ul {
+				display:			none;
+			}
+		}
+
+		/* specific to non IE browsers */
+		li:hover {
+			a {
+				color:				$hidingmenu_normal_color;
+				background:			$hidingmenu_focus_background;
+			}
+			ul {
+				display:			block;
+				position:			absolute;
+				top:				21px;
+				left:				0;
+				width:				105px;
+				li a.hide {
+					background:			$hidingmenu_l2_normal_background;
+					color:				$hidingmenu_normal_color;
+				}
+				li:hover a.hide {
+					background:			$hidingmenu_l2_focus_background;
+					color:				$hidingmenu_focus_color;
+				}
+				li ul {
+					display:			none;
+				}
+				li a {
+					display:			block;
+					background:			$hidingmenu_inner_background;
+					color:				$hidingmenu_focus_color;
+				}
+				li a:hover {
+					background:			$hidingmenu_l2_focus_background;
+					color:				$hidingmenu_focus_color;
+				}
+				li:hover ul {
+					display:			block;
+					position:			absolute;
+					left:				105px;
+					top:				0;
+				}
+				li:hover ul.left {
+					left:				-105px;
+				}
+			}
+		}
+	}
+}

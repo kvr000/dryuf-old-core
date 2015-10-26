@@ -1,0 +1,5 @@
+#!/bin/sh
+
+set -e
+
+exec dryuf_filterxmi dryuf net.dryuf java > src/main/design/design/dryuf/dryuf.xmi

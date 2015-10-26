@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+dir=${0%/*}
+
+rsync -aC $dir/war/. target/.
+rsync -aC $dir/war/test-classes/. src/test/_local/.
+
+echo dryuf.projectRoot=$PWD/ >> src/test/_local/config/local/dryuf-local.properties
