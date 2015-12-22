@@ -39,7 +39,7 @@ import java.io.OutputStream;
 import java.util.Collection;
 import java.util.function.Function;
 
-import org.apache.commons.codec.Charsets;
+import java.nio.charset.StandardCharsets;
 
 import net.dryuf.core.CallerContext;
 import net.dryuf.core.Textual;
@@ -86,7 +86,7 @@ public class XmlFormat extends java.lang.Object
 		StringBuilder out = new StringBuilder();
 		formatSb(out, callerContext, fmt, args);
 		try {
-			outputStream.write(out.toString().getBytes(Charsets.UTF_8));
+			outputStream.write(out.toString().getBytes(StandardCharsets.UTF_8));
 		}
 		catch (IOException e) {
 			throw new RuntimeException(e);

@@ -43,7 +43,7 @@ import java.util.Set;
 
 import javax.inject.Inject;
 
-import org.apache.commons.codec.Charsets;
+import java.nio.charset.StandardCharsets;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
@@ -141,7 +141,7 @@ public abstract class AbstractUserAccountBo extends java.lang.Object implements 
 		catch (NoSuchAlgorithmException ex) {
 			throw new RuntimeException(ex);
 		}
-		return new String(org.apache.commons.codec.binary.Hex.encodeHex(md.digest(input.getBytes(Charsets.UTF_8))));
+		return new String(org.apache.commons.codec.binary.Hex.encodeHex(md.digest(input.getBytes(StandardCharsets.UTF_8))));
 	}
 
 	@Override

@@ -43,7 +43,7 @@ import java.util.concurrent.Callable;
 
 import javax.inject.Inject;
 
-import org.apache.commons.codec.Charsets;
+import java.nio.charset.StandardCharsets;
 
 import net.dryuf.core.UiContext;
 import net.dryuf.security.AppDomainDef;
@@ -173,7 +173,7 @@ public class DbUserAccountBo extends AbstractUserAccountBo
 		catch (NoSuchAlgorithmException ex) {
 			throw new RuntimeException(ex);
 		}
-		return new String(org.apache.commons.codec.binary.Hex.encodeHex(md.digest(input.getBytes(Charsets.UTF_8))));
+		return new String(org.apache.commons.codec.binary.Hex.encodeHex(md.digest(input.getBytes(StandardCharsets.UTF_8))));
 	}
 
 	@Override

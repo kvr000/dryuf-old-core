@@ -49,7 +49,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.apache.commons.codec.Charsets;
+import java.nio.charset.StandardCharsets;
 
 import net.dryuf.core.EntityHolder;
 import net.dryuf.core.Options;
@@ -77,7 +77,7 @@ public class ObjectOperControllerTest extends AppTenvObject
 	{
 		ObjectOperContext operContext = createObjectOperContext("/", MapUtil.createHashMap("method", "list"));
 		try {
-			((DummyRequest)operContext.getRequest()).setInputStream(new ByteArrayInputStream("{}".getBytes(Charsets.UTF_8)));
+			((DummyRequest)operContext.getRequest()).setInputStream(new ByteArrayInputStream("{}".getBytes(StandardCharsets.UTF_8)));
 			operContext.setupObjectOperMarshaller("dryuf");
 			@SuppressWarnings({ "unchecked", "unused" })
 			ListContainer<TestMain> list = (ListContainer<TestMain>) operTestMain.operate(operContext, new EntityHolder<Object>(null, operContext.getCallerContext()));
@@ -108,7 +108,7 @@ public class ObjectOperControllerTest extends AppTenvObject
 		ObjectOperContext operContext = createObjectOperContext("/", MapUtil.createHashMap("method", "create"));
 		try {
 			((DummyRequest)operContext.getRequest()).setMethod("POST");
-			((DummyRequest)operContext.getRequest()).setInputStream(new ByteArrayInputStream("{ \"svalue\": \"xyz\", \"ivalue\": 6 }".getBytes(Charsets.UTF_8)));
+			((DummyRequest)operContext.getRequest()).setInputStream(new ByteArrayInputStream("{ \"svalue\": \"xyz\", \"ivalue\": 6 }".getBytes(StandardCharsets.UTF_8)));
 			operContext.setupObjectOperMarshaller("dryuf");
 			@SuppressWarnings("unchecked")
 			EntityHolder<TestMain> obj = (EntityHolder<TestMain>) operTestMain.operate(operContext, EntityHolder.createRoleOnly(operContext.getCallerContext()));
@@ -127,7 +127,7 @@ public class ObjectOperControllerTest extends AppTenvObject
 		ObjectOperContext operContext = createObjectOperContext("/"+tc.getPk()+"/", MapUtil.createHashMap("method", "update"));
 		try {
 			((DummyRequest)operContext.getRequest()).setMethod("PUT");
-			((DummyRequest)operContext.getRequest()).setInputStream(new ByteArrayInputStream("{ \"svalue\": \"abc\", \"ivalue\": 3 }".getBytes(Charsets.UTF_8)));
+			((DummyRequest)operContext.getRequest()).setInputStream(new ByteArrayInputStream("{ \"svalue\": \"abc\", \"ivalue\": 3 }".getBytes(StandardCharsets.UTF_8)));
 			@SuppressWarnings("unchecked")
 			EntityHolder<TestMain> holder = (EntityHolder<TestMain>) operTestMain.operate(operContext, new EntityHolder<Object>(null, operContext.getCallerContext()));
 			Assert.assertNotNull(holder);
@@ -143,7 +143,7 @@ public class ObjectOperControllerTest extends AppTenvObject
 		ObjectOperContext presenter = createObjectOperContext("/", MapUtil.createHashMap("method", "create"));
 		try {
 			((DummyRequest)presenter.getRequest()).setMethod("POST");
-			((DummyRequest)presenter.getRequest()).setInputStream(new ByteArrayInputStream("{ \"svalue\": \"xyz\", \"ivalue\": 6 }".getBytes(Charsets.UTF_8)));
+			((DummyRequest)presenter.getRequest()).setInputStream(new ByteArrayInputStream("{ \"svalue\": \"xyz\", \"ivalue\": 6 }".getBytes(StandardCharsets.UTF_8)));
 			@SuppressWarnings("unchecked")
 			EntityHolder<TestMain> obj = (EntityHolder<TestMain>) operTestMain.operate(presenter, new EntityHolder<Object>(null, presenter.getCallerContext()));
 			Assert.assertNotNull(obj);
