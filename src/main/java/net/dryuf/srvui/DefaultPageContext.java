@@ -50,7 +50,7 @@ import net.dryuf.core.ReportException;
 import net.dryuf.core.UiContext;
 import net.dryuf.trans.meta.NoDynamic;
 import net.dryuf.web.jee.JeeWebRequest;
-import org.apache.commons.io.Charsets;
+import java.nio.charset.StandardCharsets;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -119,7 +119,7 @@ public class DefaultPageContext extends java.lang.Object implements PageContext
 	public void			output(String text)
 	{
 		try {
-			response.getOutputStream().write(text.getBytes(Charsets.UTF_8));
+			response.getOutputStream().write(text.getBytes(StandardCharsets.UTF_8));
 		}
 		catch (IOException e) {
 			throw new RuntimeException(e);

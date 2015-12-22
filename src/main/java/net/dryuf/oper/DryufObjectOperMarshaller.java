@@ -52,7 +52,7 @@ import net.dryuf.validation.UniqueValidationException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
-import org.apache.commons.codec.Charsets;
+import java.nio.charset.StandardCharsets;
 
 import net.dryuf.core.CallerContext;
 import net.dryuf.core.Dryuf;
@@ -209,7 +209,7 @@ public class DryufObjectOperMarshaller extends java.lang.Object implements Objec
 		if (inputMethod == null) {
 			if (smethod.equals("formaction")) {
 				inputMethod = ObjectOperMethod.ACTION;
-				inputStream = new ByteArrayInputStream(request.getParam("_arg").getBytes(Charsets.UTF_8));
+				inputStream = new ByteArrayInputStream(request.getParam("_arg").getBytes(StandardCharsets.UTF_8));
 			}
 			else {
 				throw new RuntimeException("unknown method: "+smethod);
@@ -334,7 +334,7 @@ public class DryufObjectOperMarshaller extends java.lang.Object implements Objec
 			return new HashMap<String, Object>();
 		InputStream inputStream;
 		if (request.getRequestContentType().equals("multipart/form-data")) {
-			inputStream = new ByteArrayInputStream(request.getParam("_arg").getBytes(Charsets.UTF_8));
+			inputStream = new ByteArrayInputStream(request.getParam("_arg").getBytes(StandardCharsets.UTF_8));
 		}
 		else {
 			inputStream = request.getInputStream();

@@ -34,7 +34,7 @@
 
 package net.dryuf.parse;
 
-import org.apache.commons.codec.Charsets;
+import java.nio.charset.StandardCharsets;
 
 import net.dryuf.core.ByteUtil;
 import org.apache.commons.lang3.ArrayUtils;
@@ -119,7 +119,7 @@ public class BinaryWriter extends java.lang.Object
 
 	public BinaryWriter		writeString(String str)
 	{
-		this.writeDirect(str.getBytes(Charsets.UTF_8));
+		this.writeDirect(str.getBytes(StandardCharsets.UTF_8));
 		return this;
 	}
 
@@ -158,7 +158,7 @@ public class BinaryWriter extends java.lang.Object
 
 	public BinaryWriter		writeVarString(String data)
 	{
-		this.writeVarBytes(data.getBytes(Charsets.UTF_8));
+		this.writeVarBytes(data.getBytes(StandardCharsets.UTF_8));
 		return this;
 	}
 
@@ -193,7 +193,7 @@ public class BinaryWriter extends java.lang.Object
 
 	public BinaryWriter		writeFrpcString(String data)
 	{
-		byte[] bytes = data.getBytes(Charsets.UTF_8);
+		byte[] bytes = data.getBytes(StandardCharsets.UTF_8);
 		this.writeDirect(createFrpcInt((byte)0x20, bytes.length));
 		this.writeDirect(bytes);
 		return this;

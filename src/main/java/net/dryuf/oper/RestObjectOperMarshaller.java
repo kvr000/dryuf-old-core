@@ -43,7 +43,7 @@ import java.util.List;
 import java.util.Map;
 
 import net.dryuf.util.MapUtil;
-import org.apache.commons.codec.Charsets;
+import java.nio.charset.StandardCharsets;
 
 import net.dryuf.textual.TextualManager;
 import net.dryuf.serialize.DataMarshaller;
@@ -224,7 +224,7 @@ public class RestObjectOperMarshaller extends java.lang.Object implements Object
 			return new HashMap<String, Object>();
 		InputStream inputStream;
 		if (request.getRequestContentType().equals("multipart/form-data")) {
-			inputStream = new ByteArrayInputStream(request.getParam("_arg").getBytes(Charsets.UTF_8));
+			inputStream = new ByteArrayInputStream(request.getParam("_arg").getBytes(StandardCharsets.UTF_8));
 		}
 		else {
 			inputStream = request.getInputStream();
