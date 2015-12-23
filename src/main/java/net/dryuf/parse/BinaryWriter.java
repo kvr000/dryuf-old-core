@@ -46,7 +46,7 @@ public class BinaryWriter extends java.lang.Object
 	{
 	}
 
-	static public byte[]		createVarInt(long number)
+	static public byte[]		createBerInt(long number)
 	{
 		byte[] buff = new byte[16];
 		int i = buff.length;
@@ -136,9 +136,9 @@ public class BinaryWriter extends java.lang.Object
 		return this;
 	}
 
-	public BinaryWriter		writeVarInt(long number)
+	public BinaryWriter		writeBerInt(long number)
 	{
-		writeDirect(createVarInt(number));
+		writeDirect(createBerInt(number));
 		return this;
 	}
 
@@ -200,7 +200,7 @@ public class BinaryWriter extends java.lang.Object
 
 	public BinaryWriter		writeVarBytes(byte[] data)
 	{
-		this.writeVarInt(data.length);
+		this.writePbufInt32(data.length);
 		this.writeDirect(data);
 		return this;
 	}

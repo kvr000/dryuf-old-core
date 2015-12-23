@@ -61,7 +61,7 @@ public class BinaryReader extends java.lang.Object
 		return self;
 	}
 
-	public int			readVarInt32(String name)
+	public int			readBerInt32(String name)
 	{
 		int number = 0;
 		byte ch = this.content[pos++];
@@ -87,13 +87,13 @@ public class BinaryReader extends java.lang.Object
 		return number;
 	}
 
-	public int			readZigZag32(String name)
+	public int			readZigZagInt32(String name)
 	{
 		int n = readPbufInt32(name);
 		return (-(n&1))^(n>>>1);
 	}
 
-	public long			readVarInt64(String name)
+	public long			readBerInt64(String name)
 	{
 		long number = 0;
 		byte ch = this.content[pos++];
@@ -119,7 +119,7 @@ public class BinaryReader extends java.lang.Object
 		return number;
 	}
 
-	public long			readZigZag64(String name)
+	public long			readZigZagInt64(String name)
 	{
 		long n = readPbufInt64(name);
 		return (-(n&1))^(n>>>1);
@@ -217,7 +217,7 @@ public class BinaryReader extends java.lang.Object
 
 	public byte[]			readVarBytes(int max_size, String name)
 	{
-		int length = this.readVarInt32(name);
+		int length = this.readPbufInt32(name);
 		if (length > max_size)
 			throw new ArrayIndexOutOfBoundsException("length > max_size for "+name);
 		return this.readBytes(length, name);
