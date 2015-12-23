@@ -35,15 +35,9 @@
 package net.dryuf.parse.test;
 
 
-import net.dryuf.parse.BinaryReader;
 import net.dryuf.parse.BinaryWriter;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import javax.inject.Inject;
 
 public class BinaryWriterTest extends java.lang.Object
 {
@@ -66,11 +60,11 @@ public class BinaryWriterTest extends java.lang.Object
 	}
 
 	@Test
-	public void			testVarInts()
+	public void			testBerInts()
 	{
-		Assert.assertArrayEquals(new byte[]{ 12 }, new BinaryWriter().writeVarInt((byte) 12).getContent());
-		Assert.assertArrayEquals(new byte[]{ (byte)(0x80+9), (byte)(0x80+54), (byte)(0x80+87), (byte)72 }, new BinaryWriter().writeVarInt(19770312).getContent());
-		Assert.assertArrayEquals(new byte[]{ (byte)(0x80+4), (byte)(0x80+63), (byte)(0x80+50), (byte)(0x80+19), (byte)(0x80+51), (byte)(0x80+50), 58 }, new BinaryWriter().writeVarInt(19770312022330L).getContent());
+		Assert.assertArrayEquals(new byte[]{ 12 }, new BinaryWriter().writeBerInt((byte) 12).getContent());
+		Assert.assertArrayEquals(new byte[]{ (byte)(0x80+9), (byte)(0x80+54), (byte)(0x80+87), (byte)72 }, new BinaryWriter().writeBerInt(19770312).getContent());
+		Assert.assertArrayEquals(new byte[]{ (byte)(0x80+4), (byte)(0x80+63), (byte)(0x80+50), (byte)(0x80+19), (byte)(0x80+51), (byte)(0x80+50), 58 }, new BinaryWriter().writeBerInt(19770312022330L).getContent());
 	}
 
 	@Test

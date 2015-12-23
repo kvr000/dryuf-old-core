@@ -38,11 +38,6 @@ package net.dryuf.parse.test;
 import net.dryuf.parse.BinaryReader;
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import javax.inject.Inject;
 
 public class BinaryReaderTest extends java.lang.Object
 {
@@ -65,11 +60,11 @@ public class BinaryReaderTest extends java.lang.Object
 	}
 
 	@Test
-	public void			testVarInts()
+	public void			testBerInts()
 	{
-		Assert.assertEquals((byte)12, new BinaryReader(new byte[]{ 12 }).readVarInt32("byte"));
-		Assert.assertEquals(19770312, new BinaryReader(new byte[]{ (byte)(0x80+9), (byte)(0x80+54), (byte)(0x80+87), (byte)72 }).readVarInt32("int"));
-		Assert.assertEquals(19770312022330L, new BinaryReader(new byte[]{ (byte)(0x80+4), (byte)(0x80+63), (byte)(0x80+50), (byte)(0x80+19), (byte)(0x80+51), (byte)(0x80+50), 58 }).readVarInt64("long"));
+		Assert.assertEquals((byte)12, new BinaryReader(new byte[]{ 12 }).readBerInt32("byte"));
+		Assert.assertEquals(19770312, new BinaryReader(new byte[]{ (byte)(0x80+9), (byte)(0x80+54), (byte)(0x80+87), (byte)72 }).readBerInt32("int"));
+		Assert.assertEquals(19770312022330L, new BinaryReader(new byte[]{ (byte)(0x80+4), (byte)(0x80+63), (byte)(0x80+50), (byte)(0x80+19), (byte)(0x80+51), (byte)(0x80+50), 58 }).readBerInt64("long"));
 	}
 
 	@Test
@@ -83,11 +78,11 @@ public class BinaryReaderTest extends java.lang.Object
 	@Test
 	public void			testZigZagInts()
 	{
-		Assert.assertEquals((byte)12, new BinaryReader(new byte[]{ 24 }).readZigZag32("byte"));
-		Assert.assertEquals(19770312, new BinaryReader(new byte[]{ (byte)(0x80+16), (byte)(0x80+47), (byte)(0x80+109), (byte)18 }).readZigZag32("int"));
-		Assert.assertEquals(19770312022330L, new BinaryReader(new byte[]{ (byte)(0x80+116), (byte)(0x80+100), (byte)(0x80+102), (byte)(0x80+38), (byte)(0x80+100), (byte)(0x80+126), 8 }).readZigZag64("long"));
-		Assert.assertEquals(-1, new BinaryReader(new byte[]{ (byte)1 }).readZigZag32("int"));
-		Assert.assertEquals(-128, new BinaryReader(new byte[]{ (byte)(0x80+127), (byte)(1) }).readZigZag64("long"));
+		Assert.assertEquals((byte)12, new BinaryReader(new byte[]{ 24 }).readZigZagInt32("byte"));
+		Assert.assertEquals(19770312, new BinaryReader(new byte[]{ (byte)(0x80+16), (byte)(0x80+47), (byte)(0x80+109), (byte)18 }).readZigZagInt32("int"));
+		Assert.assertEquals(19770312022330L, new BinaryReader(new byte[]{ (byte)(0x80+116), (byte)(0x80+100), (byte)(0x80+102), (byte)(0x80+38), (byte)(0x80+100), (byte)(0x80+126), 8 }).readZigZagInt64("long"));
+		Assert.assertEquals(-1, new BinaryReader(new byte[]{ (byte)1 }).readZigZagInt32("int"));
+		Assert.assertEquals(-128, new BinaryReader(new byte[]{ (byte)(0x80+127), (byte)(1) }).readZigZagInt64("long"));
 	}
 
 	@Test
