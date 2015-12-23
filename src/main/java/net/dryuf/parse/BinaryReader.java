@@ -74,6 +74,25 @@ public class BinaryReader extends java.lang.Object
 		return number;
 	}
 
+	public int			readPbufInt32(String name)
+	{
+		byte ch = this.content[pos++];
+		int number = ch&0x7f;
+		for (int base = 7; (ch&0x80) != 0; base += 7) {
+			ch = this.content[pos++];
+			if (base >= 28 && ch >= 16)
+				throw new IllegalArgumentException("Overflow while reading "+name);
+			number |= ((ch&0x7f)<<base);
+		}
+		return number;
+	}
+
+	public int			readZigZag32(String name)
+	{
+		int n = readPbufInt32(name);
+		return (-(n&1))^(n>>>1);
+	}
+
 	public long			readVarInt64(String name)
 	{
 		long number = 0;
@@ -85,6 +104,25 @@ public class BinaryReader extends java.lang.Object
 		}
 		number |= ch;
 		return number;
+	}
+
+	public long			readPbufInt64(String name)
+	{
+		byte ch = this.content[pos++];
+		long number = ch&0x7f;
+		for (int base = 7; (ch&0x80) != 0; base += 7) {
+			ch = this.content[pos++];
+			if (base >= 63 && ch >= 2)
+				throw new IllegalArgumentException("Overflow while reading "+name);
+			number |= ((long)(ch&0x7f)<<base);
+		}
+		return number;
+	}
+
+	public long			readZigZag64(String name)
+	{
+		long n = readPbufInt64(name);
+		return (-(n&1))^(n>>>1);
 	}
 
 	public byte			readLe8(String name)

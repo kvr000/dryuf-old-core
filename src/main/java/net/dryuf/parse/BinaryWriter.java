@@ -57,6 +57,37 @@ public class BinaryWriter extends java.lang.Object
 		return ByteUtil.subBytes(buff, i);
 	}
 
+	static public byte[]		createPbufInt32(int number)
+	{
+		byte[] buff = new byte[16];
+		int i = 0;
+		buff[i] = (byte)(number|0x80);
+		number >>>= 7;
+		for (int base = 7; number != 0; base += 7, number >>>= 7) {
+			buff[++i] =(byte)(number|0x80);
+		}
+		buff[i] &= 0x7f;
+		return ByteUtil.subBytes(buff, 0, i+1);
+	}
+
+	static public byte[]		createPbufInt64(long number)
+	{
+		byte[] buff = new byte[16];
+		int i = 0;
+		buff[i] = (byte)(number|0x80);
+		number >>>= 7;
+		for (int base = 7; number != 0; base += 7, number >>>= 7) {
+			buff[++i] =(byte)(number|0x80);
+		}
+		buff[i] &= 0x7f;
+		return ByteUtil.subBytes(buff, 0, i+1);
+	}
+
+	static public byte[]		createZigZagInt(long number)
+	{
+		return createPbufInt64((number<<1)^(number>>63));
+	}
+
 	public BinaryWriter		writeLe8(byte value)
 	{
 		this.writeDirect(new byte[]{ value });
@@ -108,6 +139,24 @@ public class BinaryWriter extends java.lang.Object
 	public BinaryWriter		writeVarInt(long number)
 	{
 		writeDirect(createVarInt(number));
+		return this;
+	}
+
+	public BinaryWriter		writePbufInt32(int number)
+	{
+		writeDirect(createPbufInt32(number));
+		return this;
+	}
+
+	public BinaryWriter		writePbufInt64(long number)
+	{
+		writeDirect(createPbufInt64(number));
+		return this;
+	}
+
+	public BinaryWriter		writeZigZagInt(long number)
+	{
+		writeDirect(createZigZagInt(number));
 		return this;
 	}
 
