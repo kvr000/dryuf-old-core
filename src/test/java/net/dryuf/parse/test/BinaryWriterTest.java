@@ -74,6 +74,24 @@ public class BinaryWriterTest extends java.lang.Object
 	}
 
 	@Test
+	public void			testPbufInts()
+	{
+		Assert.assertArrayEquals(new byte[]{ 12 }, new BinaryWriter().writePbufInt32((byte) 12).getContent());
+		Assert.assertArrayEquals(new byte[]{ (byte)(0x80+72), (byte)(0x80+87), (byte)(0x80+54), (byte)9 }, new BinaryWriter().writePbufInt32(19770312).getContent());
+		Assert.assertArrayEquals(new byte[]{ (byte)(0x80+58), (byte)(0x80+50), (byte)(0x80+51), (byte)(0x80+19), (byte)(0x80+50), (byte)(0x80+63), 4 }, new BinaryWriter().writePbufInt64(19770312022330L).getContent());
+	}
+
+	@Test
+	public void			testZigZagInts()
+	{
+		Assert.assertArrayEquals(new byte[]{ 24 }, new BinaryWriter().writeZigZagInt((byte) 12).getContent());
+		Assert.assertArrayEquals(new byte[]{ (byte)(0x80+16), (byte)(0x80+47), (byte)(0x80+109), (byte)18 }, new BinaryWriter().writeZigZagInt(19770312).getContent());
+		Assert.assertArrayEquals(new byte[]{ (byte)(0x80+116), (byte)(0x80+100), (byte)(0x80+102), (byte)(0x80+38), (byte)(0x80+100), (byte)(0x80+126), 8 }, new BinaryWriter().writeZigZagInt(19770312022330L).getContent());
+		Assert.assertArrayEquals(new byte[]{ 1 }, new BinaryWriter().writeZigZagInt(-1).getContent());
+		Assert.assertArrayEquals(new byte[]{ (byte)(0x80+127), (byte)(1) }, new BinaryWriter().writeZigZagInt(-128).getContent());
+	}
+
+	@Test
 	public void			testString()
 	{
 		Assert.assertArrayEquals(new byte[]{ 'h', 'e', 'l', 'l', 'o' }, new BinaryWriter().writeString("hello").getContent());

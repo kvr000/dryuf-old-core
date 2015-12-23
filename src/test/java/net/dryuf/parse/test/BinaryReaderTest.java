@@ -73,6 +73,24 @@ public class BinaryReaderTest extends java.lang.Object
 	}
 
 	@Test
+	public void			testPbufInts()
+	{
+		Assert.assertEquals((byte)12, new BinaryReader(new byte[]{ 12 }).readPbufInt32("byte"));
+		Assert.assertEquals(19770312, new BinaryReader(new byte[]{ (byte)(0x80+72), (byte)(0x80+87), (byte)(0x80+54), (byte)9 }).readPbufInt32("int"));
+		Assert.assertEquals(19770312022330L, new BinaryReader(new byte[]{ (byte)(0x80+58), (byte)(0x80+50), (byte)(0x80+51), (byte)(0x80+19), (byte)(0x80+50), (byte)(0x80+63), 4 }).readPbufInt64("long"));
+	}
+
+	@Test
+	public void			testZigZagInts()
+	{
+		Assert.assertEquals((byte)12, new BinaryReader(new byte[]{ 24 }).readZigZag32("byte"));
+		Assert.assertEquals(19770312, new BinaryReader(new byte[]{ (byte)(0x80+16), (byte)(0x80+47), (byte)(0x80+109), (byte)18 }).readZigZag32("int"));
+		Assert.assertEquals(19770312022330L, new BinaryReader(new byte[]{ (byte)(0x80+116), (byte)(0x80+100), (byte)(0x80+102), (byte)(0x80+38), (byte)(0x80+100), (byte)(0x80+126), 8 }).readZigZag64("long"));
+		Assert.assertEquals(-1, new BinaryReader(new byte[]{ (byte)1 }).readZigZag32("int"));
+		Assert.assertEquals(-128, new BinaryReader(new byte[]{ (byte)(0x80+127), (byte)(1) }).readZigZag64("long"));
+	}
+
+	@Test
 	public void			testString()
 	{
 		Assert.assertEquals("hello", new BinaryReader(new byte[]{ 'h', 'e', 'l', 'l', 'o' }).readString(5, "string"));
