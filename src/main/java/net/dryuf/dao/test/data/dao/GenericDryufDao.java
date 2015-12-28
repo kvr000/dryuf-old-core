@@ -38,4 +38,4 @@ package net.dryuf.dao.test.data.dao;
 public interface GenericDryufDao
 {
 	public void			runNativeUpdate(String sql);
-};
+}

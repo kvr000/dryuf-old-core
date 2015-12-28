@@ -3466,6 +3466,7 @@
 								<upperValue xmi:type="uml:LiteralString" xmi:id="BOUML_MULTIPLICITY_U_0xcae07_1" value="1"/>
 								<xmi:Extension extender="Bouml">
 									<taggedValue tag="dry-primary" value="1"/>
+									<taggedValue tag="dry-serial" value="1"/>
 								</xmi:Extension>
 							</ownedAttribute>
 							<ownedAttribute xmi:type="uml:Property" name="name" xmi:id="BOUML_0xcae87_1" visibility="private">
@@ -3499,6 +3500,7 @@
 								<taggedValue tag="dry-roleGet" value="guest"/>
 								<taggedValue tag="dry-suggestFields" value="svalue"/>
 								<taggedValue tag="dry-roleSet" value="guest"/>
+								<taggedValue tag="dry-index(name_udx)" value="unique(name)"/>
 							</xmi:Extension>
 							<ownedAttribute xmi:type="uml:Property" name="testId" xmi:id="BOUML_0x9e707_1" visibility="public">
 								<type xmi:type="uml:Class" xmi:idref="BOUML_0x6cb07_4"/>
@@ -3508,6 +3510,11 @@
 									<taggedValue tag="dry-primary" value="1"/>
 									<taggedValue tag="dry-serial" value="1"/>
 								</xmi:Extension>
+							</ownedAttribute>
+							<ownedAttribute xmi:type="uml:Property" name="name" xmi:id="BOUML_0x9e788_2" visibility="private">
+								<type xmi:type="uml:Class" xmi:idref="BOUML_0x24a87_4"/>
+								<lowerValue xmi:type="uml:LiteralString" xmi:id="BOUML_MULTIPLICITY_L_0x9e788_1" value="1"/>
+								<upperValue xmi:type="uml:LiteralString" xmi:id="BOUML_MULTIPLICITY_U_0x9e788_1" value="1"/>
 							</ownedAttribute>
 							<ownedAttribute xmi:type="uml:Property" name="svalue" xmi:id="BOUML_0x9e787_1" visibility="private">
 								<type xmi:type="uml:Class" xmi:idref="BOUML_0x24a87_4"/>
@@ -3532,6 +3539,7 @@
 								<taggedValue tag="dry-gen" value="clsmeta, sql"/>
 								<taggedValue tag="dry-roleGet" value="guest"/>
 								<taggedValue tag="dry-roleSet" value="guest"/>
+								<taggedValue tag="dry-index(svalue_udx)" value="unique(testId, svalue)"/>
 							</xmi:Extension>
 							<ownedAttribute xmi:type="uml:Property" name="testId" xmi:id="BOUML_0x51a07_0" visibility="private" association="BOUML_ASSOC_0x51987_0" aggregation="composite">
 								<type xmi:type="uml:Class" xmi:idref="BOUML_0x75107_4"/>
@@ -3596,7 +3604,7 @@
 		<packagedElement xmi:type="uml:DataType" xmi:id="BOUML_datatype_6" name="string(4000)"/>
 		<packagedElement xmi:type="uml:DataType" xmi:id="BOUML_datatype_34" name="string(5)"/>
 		<packagedElement xmi:type="uml:DataType" xmi:id="BOUML_datatype_29" name="string(512)"/>
-		<packagedElement xmi:type="uml:DataType" xmi:id="BOUML_datatype_2" name="string(64)"/>
+		<packagedElement xmi:type="uml:DataType" xmi:id="BOUML_datatype_2" name="string(128)"/>
 		<packagedElement xmi:type="uml:DataType" xmi:id="BOUML_datatype_12" name="void"/>
 	</uml:Model>
 </xmi:XMI>

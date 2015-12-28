@@ -64,12 +64,31 @@ import net.dryuf.tenv.dao.TestMainDao;
 public class DaoAccessJpaTest extends AppTenvObject
 {
 	@Inject
-	TestMainDao			testMainDao;
+	protected TestMainDao		testMainDao;
 	@Inject
-	TestChildDao			testChildDao;
+	protected TestChildDao		testChildDao;
 
 	@PersistenceContext(unitName="dryuf")
 	protected EntityManager		em;
+
+	public long			allocateTestMain(String name)
+	{
+		TestMain testMain = new TestMain();
+		testMain.setName(Dryuf.dotClassname(DaoAccessJpaTest.class)+"-"+name);
+		testMain.setSvalue(testMain.getName());
+		try {
+			testMainDao.runTransactioned(() -> {
+				em.createNativeQuery("DELETE FROM TestMain t WHERE t.name = ?").setParameter(1, name).executeUpdate();
+				return null;
+			});
+		}
+		catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		testMainDao.insert(testMain);
+		testChildDao.removeByCompos(testMain.getTestId());
+		return testMain.getTestId();
+	}
 
 	public void			cleanTests()
 	{
@@ -81,6 +100,7 @@ public class DaoAccessJpaTest extends AppTenvObject
 	public void			testPkChange()
 	{
 		TestMain to0 = new TestMain();
+		to0.setName(Dryuf.dotClassname(DaoAccessJpaTest.class)+"-testPkChange");
 		to0.setSvalue("pkChange");
 		testMainDao.insert(to0);
 		TestChild tc0 = new TestChild();
@@ -101,7 +121,7 @@ public class DaoAccessJpaTest extends AppTenvObject
 
 		EntityHolder<Object> composition = new EntityHolder<Object>(null, this.createCallerContext());
 
-		TestMain to0 = rdaTestMain.createObject(composition, MapUtil.createHashMap("svalue", (Object)"xyz"));
+		TestMain to0 = rdaTestMain.createObject(composition, MapUtil.createHashMap("name", Dryuf.dotClassname(DaoAccessJpaTest.class), "svalue", (Object)"xyz"));
 		List<EntityHolder<TestMain>> results = new LinkedList<EntityHolder<TestMain>>();
 		Assert.assertEquals(1, rdaTestMain.listObjects(results, composition, null, null, 0L, 100L));
 		Assert.assertEquals(1, results.size());
@@ -129,30 +149,6 @@ public class DaoAccessJpaTest extends AppTenvObject
 	@Transactional("dryuf")
 	public void			testPlacement()
 	{
-		cleanTests();
-		@SuppressWarnings("unused")
-		List<Object> l;
-		em.createQuery("DELETE FROM TestMain");
-
-		TestMain to0 = new TestMain();
-		to0.setSvalue("pkChange");
-		testMainDao.insert(to0);
-
-//		o = em.createQuery("SELECT ?1 as x FROM TestMain")
-//			.setParameter(1, new TestChild.Pk(1L, 1))
-//			.getSingleResult();
-//		Assert.assertTrue(o instanceof TestChild.Pk);
-
-//		l = em.createQuery("SELECT 1 FROM TestMain WHERE ?1 = ?2")
-//			.setParameter(1, new Long(1L))
-//			.setParameter(2, new TestChild.Pk(1L, 1))
-//			.getResultList();
-//		Assert.assertEquals(1, l.size());
-		//Assert.assertTrue(o instanceof Number);
-
-//		l = em.createQuery("SELECT u FROM (SELECT u FROM UserAccount u WHERE userId = ?userId) t")
-//			.setParameter("userId", new Long(1L))
-//			.getResultList();
-//		Assert.assertEquals(1, l.size());
+		allocateTestMain("testPlacement");
 	}
 }

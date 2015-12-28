@@ -38,38 +38,29 @@ import java.lang.annotation.Annotation;
 
 import net.dryuf.core.Dryuf;
 import net.dryuf.tenv.DAssert;
+import org.junit.Test;
 
 
 public class AnnotationTest extends java.lang.Object
 {
-	public <T extends Annotation> T	needMethodAnnotation(Class<?> clazz, String methodName, Class<T> annoType)
+	public <T extends Annotation> T	needMethodAnnotation(Class<?> clazz, String methodName, Class<T> annoType) throws Exception
 	{
 		T anno;
-		try {
-			if ((anno = clazz.getMethod(methodName).getAnnotation(annoType)) == null)
-				throw new RuntimeException("annotation not found");
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
+		if ((anno = clazz.getMethod(methodName).getAnnotation(annoType)) == null)
+			throw new RuntimeException("annotation not found");
 		return anno;
 	}
 
-	public <T extends Annotation> T	needFieldAnnotation(Class<?> clazz, String fieldName, Class<T> annoType)
+	public <T extends Annotation> T	needFieldAnnotation(Class<?> clazz, String fieldName, Class<T> annoType) throws Exception
 	{
 		T anno;
-		try {
-			if ((anno = clazz.getField(fieldName).getAnnotation(annoType)) == null)
-				throw new RuntimeException("annotation not found");
-		}
-		catch (Exception e) {
-			throw new RuntimeException(e);
-		}
+		if ((anno = clazz.getField(fieldName).getAnnotation(annoType)) == null)
+			throw new RuntimeException("annotation not found");
 		return anno;
 	}
 
-	@org.junit.Test
-	public void			testElements()
+	@Test
+	public void			testElements() throws Exception
 	{
 		DAssert.assertEquals("parent", Dryuf.getMandatoryAnnotation(AnnoParent.class, TestAnnotationOne.class).value());
 		DAssert.assertEquals("parent", Dryuf.getMandatoryAnnotation(AnnoParent.class, TestAnnotationTwo.class).value());
@@ -82,8 +73,8 @@ public class AnnotationTest extends java.lang.Object
 		//DAssert.assertNull(needFieldAnnotation(AnnoParent.class, "field", TestAnnotationThree.class));
 	}
 
-	@org.junit.Test
-	public void			testInheritance()
+	@Test
+	public void			testInheritance() throws Exception
 	{
 		DAssert.assertEquals("parent", Dryuf.getMandatoryAnnotation(AnnoChild.class, TestAnnotationOne.class).value());
 		DAssert.assertEquals("child", Dryuf.getMandatoryAnnotation(AnnoChild.class, TestAnnotationTwo.class).value());
