@@ -32,18 +32,22 @@
  * @license	http://www.gnu.org/licenses/lgpl.txt GNU Lesser General Public License v3
  */
 
-package net.dryuf.dao.mysql.test;
+package net.dryuf.dao.test;
 
+import net.dryuf.core.Dryuf;
+import net.dryuf.dao.test.data.TestEnt;
 import net.dryuf.dao.test.data.dao.GenericDryufDao;
+import net.dryuf.dao.test.data.dao.TestEntDao;
+import net.dryuf.tenv.TestMain;
+import net.dryuf.tenv.dao.TestChildDao;
+import net.dryuf.tenv.dao.TestMainDao;
 import org.junit.Test;
-import org.junit.Before;
 import org.junit.runner.RunWith;
 
 import javax.inject.Inject;
 
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.context.ApplicationContext;
 
 
 @ContextConfiguration("classpath:testContext.xml")
@@ -53,8 +57,27 @@ public class JpaExceptionTranslateTest extends java.lang.Object
 	@Inject
 	protected GenericDryufDao	genericDryufDao;
 
-	public JpaExceptionTranslateTest()
+	@Inject
+	protected TestMainDao		testMainDao;
+
+	@Inject
+	protected TestChildDao		testChildDao;
+
+	public				JpaExceptionTranslateTest()
 	{
+	}
+
+	public long			allocateTestMain(String name)
+	{
+		TestMain testMain = new TestMain();
+		testMain.setName(Dryuf.dotClassname(JpaExceptionTranslateTest.class)+"-"+name);
+		testMain.setSvalue(testMain.getName());
+		if (name.indexOf('\'') >= 0 || name.indexOf('\\') >= 0)
+			throw new IllegalArgumentException("unexpected value from test, identifier cannot contain ' or \\");
+		runSql("DELETE FROM TestMain t WHERE t.name = '"+name+"'");
+		testMainDao.insert(testMain);
+		testChildDao.removeByCompos(testMain.getTestId());
+		return testMain.getTestId();
 	}
 
 	public void			runSqlSafe(String sql)
@@ -71,35 +94,33 @@ public class JpaExceptionTranslateTest extends java.lang.Object
 		genericDryufDao.runNativeUpdate(sql);
 	}
 
-	@Before
-	public void			createStructure()
-	{
-		runSql("DELETE FROM TestEnt");
-	}
-
 	@Test
 	public void			testCorrect() throws Exception
 	{
-		runSql("INSERT INTO TestEnt (testId) VALUES (1)");
+		long id = allocateTestMain("testCorrect");
+		runSql("INSERT INTO TestChild (testId, childId, svalue) VALUES ("+id+", 1, '1')");
 	}
 
 	@Test(expected = net.dryuf.dao.DaoPrimaryKeyConstraintException.class)
 	public void			testDaoPrimaryKeyConstraint() throws Exception
 	{
-		runSql("INSERT INTO TestEnt (testId) VALUES (2)");
-		runSql("INSERT INTO TestEnt (testId) VALUES (2)");
+		long id = allocateTestMain("testDaoPrimaryKeyConstraint");
+		runSql("INSERT INTO TestChild (testId, childId, svalue) VALUES ("+id+", 2, '1')");
+		runSql("INSERT INTO TestChild (testId, childId, svalue) VALUES ("+id+", 2, '2')");
 	}
 
 	@Test(expected = net.dryuf.dao.DaoBadNullConstraintException.class)
 	public void			testDaoBadNullConstraintException() throws Exception
 	{
-		runSql("INSERT INTO TestEnt (testId, nonull) VALUES (3, null)");
+		long id = allocateTestMain("testDaoBadNullConstraintException");
+		runSql("INSERT INTO TestChild (testId, childId) VALUES ("+id+", null)");
 	}
 
 	@Test(expected = net.dryuf.dao.DaoUniqueConstraintException.class)
 	public void			testDaoUniqueConstraintException() throws Exception
 	{
-		runSql("INSERT INTO TestEnt (testId, uniq) VALUES (4, 1)");
-		runSql("INSERT INTO TestEnt (testId, uniq) VALUES (5, 1)");
+		long id = allocateTestMain("testDaoUniqueConstraintException");
+		runSql("INSERT INTO TestChild (testId, childId, svalue) VALUES ("+id+", 4, '1')");
+		runSql("INSERT INTO TestChild (testId, childId, svalue) VALUES ("+id+", 5, '1')");
 	}
-};
+}

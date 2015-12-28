@@ -71,10 +71,11 @@ public class ClassMetaJavaTest extends AppTenvObject
 		Assert.assertNull(meta.getComposPkClass());
 		Assert.assertEquals(0, meta.getAdditionalPkFields().length);
 
-		Assert.assertEquals(3, meta.getFields().length);
+		Assert.assertEquals(4, meta.getFields().length);
 		Assert.assertEquals("testId", meta.getFields()[0].getName());
-		Assert.assertEquals("svalue", meta.getFields()[1].getName());
-		Assert.assertEquals("ivalue", meta.getFields()[2].getName());
+		Assert.assertEquals("name", meta.getFields()[1].getName());
+		Assert.assertEquals("svalue", meta.getFields()[2].getName());
+		Assert.assertEquals("ivalue", meta.getFields()[3].getName());
 
 		Assert.assertEquals("testId", meta.getRefName());
 

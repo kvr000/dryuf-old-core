@@ -40,6 +40,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import net.dryuf.core.Dryuf;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -60,9 +61,9 @@ public class RelationJpaTest extends net.dryuf.tenv.AppTenvObject
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void			testHandler()
 	{
-		entityManager.createQuery("DELETE FROM DryufJpaMain WHERE mainId = :mainId").setParameter("mainId", "one").executeUpdate();
-		entityManager.createQuery("DELETE FROM DryufJpaChild WHERE pk.mainId = :mainId").setParameter("mainId", "one").executeUpdate();
-		DryufJpaMain main = new DryufJpaMain();
+		entityManager.createQuery("DELETE FROM DryufJpaMain WHERE mainId = :mainId").setParameter(Dryuf.dotClassname(RelationJpaTest.class)+"-mainId", "one").executeUpdate();
+		entityManager.createQuery("DELETE FROM DryufJpaChild WHERE pk.mainId = :mainId").setParameter(Dryuf.dotClassname(RelationJpaTest.class)+"-mainId", "one").executeUpdate();
+			DryufJpaMain main = new DryufJpaMain();
 		main.setMainId("one");
 		DryufJpaChild child = new DryufJpaChild();
 		Pk childPk = new DryufJpaChild.Pk();

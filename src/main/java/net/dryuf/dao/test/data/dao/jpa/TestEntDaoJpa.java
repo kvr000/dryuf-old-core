@@ -56,6 +56,7 @@ public class TestEntDaoJpa extends java.lang.Object implements net.dryuf.dao.tes
 	EntityManager			entityManager;
 
 	@Override
+	@Transactional("dryuf")
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public void			insert(TestEnt obj)
 	{
@@ -64,6 +65,7 @@ public class TestEntDaoJpa extends java.lang.Object implements net.dryuf.dao.tes
 	}
 
 	@Override
+	@Transactional("dryuf")
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public void			update(TestEnt obj)
 	{
@@ -72,6 +74,7 @@ public class TestEntDaoJpa extends java.lang.Object implements net.dryuf.dao.tes
 	}
 
 	@Override
+	@Transactional("dryuf")
 	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
 	public void			remove(TestEnt obj)
 	{

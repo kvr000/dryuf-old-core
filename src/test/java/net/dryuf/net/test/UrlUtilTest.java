@@ -97,4 +97,4 @@ public class UrlUtilTest extends java.lang.Object
 		Assert.assertEquals("abcd/", UrlUtil.truncateToParent("abcd/ab/"));
 		Assert.assertEquals("abcd/", UrlUtil.truncateToParent("abcd/ab/xyz"));
 	}
-};
+}

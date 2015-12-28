@@ -63,7 +63,7 @@ public class SqlInsertSerialTest extends AppTenvObject
 		Connection connection = this.dataSource.getConnection();
 		connection.setAutoCommit(false);
 		try {
-			SqlHelper.updateAny(connection, "DELETE FROM DryufStIncTable WHERE name LIKE ?", new Object[]{SqlInsertSerialTest.class.getName()+".testExecuteSerial-%"});
+			SqlHelper.updateAny(connection, "DELETE FROM DryufStIncTable WHERE name LIKE ?", new Object[]{ SqlInsertSerialTest.class.getName()+".testExecuteSerial-%"});
 			PreparedStatement st_insertIncTable = connection.prepareStatement("INSERT INTO DryufStIncTable (name) VALUES (?)", Statement.RETURN_GENERATED_KEYS);
 			long id0 = SqlHelper.executeInsertSerial(st_insertIncTable, new Object[]{ SqlInsertSerialTest.class.getName()+".testExecuteSerial-name0" });
 			long id1 = SqlHelper.executeInsertSerial(st_insertIncTable, new Object[]{ SqlInsertSerialTest.class.getName()+".testExecuteSerial-name1" });

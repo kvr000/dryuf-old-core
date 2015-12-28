@@ -78,9 +78,21 @@ public class Dryuf extends java.lang.Object
 		return name.replace(".", "/");
 	}
 
+	@NoDynamic
+	public static String		pathClassname(Class<?> clazz)
+	{
+		return pathClassname(clazz.getName());
+	}
+
 	public static String		dashClassname(String name)
 	{
 		return name.replace(".", "-");
+	}
+
+	@NoDynamic
+	public static String		dashClassname(Class<?> clazz)
+	{
+		return dashClassname(clazz.getName());
 	}
 
 	public static <T> T		assertNotNull(T value, String message)

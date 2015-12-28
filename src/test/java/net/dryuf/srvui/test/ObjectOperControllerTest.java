@@ -39,8 +39,8 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import net.dryuf.core.Dryuf;
 import net.dryuf.oper.ObjectOperContext;
-import net.dryuf.oper.tenv.TestMainOper;
 import net.dryuf.srvui.tenv.PageContextTestUtil;
 import net.dryuf.tenv.AppTenvObject;
 import net.dryuf.util.MapUtil;
@@ -52,7 +52,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.nio.charset.StandardCharsets;
 
 import net.dryuf.core.EntityHolder;
-import net.dryuf.core.Options;
 import net.dryuf.srvui.DummyRequest;
 import net.dryuf.tenv.TestMain;
 import net.dryuf.oper.ObjectOperController;
@@ -64,11 +63,11 @@ import net.dryuf.oper.ObjectOperController.ListContainer;
 public class ObjectOperControllerTest extends AppTenvObject
 {
 	@Inject
-	protected ObjectOperController<?> operTestMain;
+	protected ObjectOperController<?> testMainOper;
 
 	public ObjectOperContext	createObjectOperContext(String path, Map<String, String> params)
 	{
-		return new ObjectOperContext(PageContextTestUtil.createPageContext(createCallerContext(), path, params), operTestMain, EntityHolder.createRoleOnly(createCallerContext()))
+		return new ObjectOperContext(PageContextTestUtil.createPageContext(createCallerContext(), path, params), testMainOper, EntityHolder.createRoleOnly(createCallerContext()))
 			.setupObjectOperMarshaller("rest");
 	}
 
@@ -77,10 +76,10 @@ public class ObjectOperControllerTest extends AppTenvObject
 	{
 		ObjectOperContext operContext = createObjectOperContext("/", MapUtil.createHashMap("method", "list"));
 		try {
-			((DummyRequest)operContext.getRequest()).setInputStream(new ByteArrayInputStream("{}".getBytes(StandardCharsets.UTF_8)));
+			((DummyRequest)operContext.getRequest()).setInputStream(new ByteArrayInputStream(("{ \"name\": \""+Dryuf.dotClassname(ObjectOperControllerTest.class)+".testList\"}").getBytes(StandardCharsets.UTF_8)));
 			operContext.setupObjectOperMarshaller("dryuf");
 			@SuppressWarnings({ "unchecked", "unused" })
-			ListContainer<TestMain> list = (ListContainer<TestMain>) operTestMain.operate(operContext, new EntityHolder<Object>(null, operContext.getCallerContext()));
+			ListContainer<TestMain> list = (ListContainer<TestMain>) testMainOper.operate(operContext, new EntityHolder<Object>(null, operContext.getCallerContext()));
 			//Assert.assertEquals(0L, list.total);
 		}
 		finally {
@@ -94,7 +93,7 @@ public class ObjectOperControllerTest extends AppTenvObject
 		ObjectOperContext operContext = createObjectOperContext("/20000000/", null);
 		try {
 			@SuppressWarnings("unchecked")
-			EntityHolder<TestMain> obj = (EntityHolder<TestMain>) operTestMain.operate(operContext, new EntityHolder<Object>(null, operContext.getCallerContext()));
+			EntityHolder<TestMain> obj = (EntityHolder<TestMain>) testMainOper.operate(operContext, new EntityHolder<Object>(null, operContext.getCallerContext()));
 			Assert.assertNull(obj);
 		}
 		finally {
@@ -108,10 +107,10 @@ public class ObjectOperControllerTest extends AppTenvObject
 		ObjectOperContext operContext = createObjectOperContext("/", MapUtil.createHashMap("method", "create"));
 		try {
 			((DummyRequest)operContext.getRequest()).setMethod("POST");
-			((DummyRequest)operContext.getRequest()).setInputStream(new ByteArrayInputStream("{ \"svalue\": \"xyz\", \"ivalue\": 6 }".getBytes(StandardCharsets.UTF_8)));
+			((DummyRequest)operContext.getRequest()).setInputStream(new ByteArrayInputStream(("{ \"name\": \""+Dryuf.dotClassname(ObjectOperControllerTest.class)+".testCreate\", \"svalue\": \"xyz\", \"ivalue\": 6 }").getBytes(StandardCharsets.UTF_8)));
 			operContext.setupObjectOperMarshaller("dryuf");
 			@SuppressWarnings("unchecked")
-			EntityHolder<TestMain> obj = (EntityHolder<TestMain>) operTestMain.operate(operContext, EntityHolder.createRoleOnly(operContext.getCallerContext()));
+			EntityHolder<TestMain> obj = (EntityHolder<TestMain>) testMainOper.operate(operContext, EntityHolder.createRoleOnly(operContext.getCallerContext()));
 			Assert.assertNotNull(obj);
 			Assert.assertEquals("xyz", obj.getEntity().getSvalue());
 		}
@@ -123,13 +122,13 @@ public class ObjectOperControllerTest extends AppTenvObject
 	@Test
 	public void			testUpdate()
 	{
-		TestMain tc = createTestMain();
+		TestMain tc = createTestMain("testUpdate");
 		ObjectOperContext operContext = createObjectOperContext("/"+tc.getPk()+"/", MapUtil.createHashMap("method", "update"));
 		try {
 			((DummyRequest)operContext.getRequest()).setMethod("PUT");
-			((DummyRequest)operContext.getRequest()).setInputStream(new ByteArrayInputStream("{ \"svalue\": \"abc\", \"ivalue\": 3 }".getBytes(StandardCharsets.UTF_8)));
+			((DummyRequest)operContext.getRequest()).setInputStream(new ByteArrayInputStream(("{ \"name\": \""+Dryuf.dotClassname(ObjectOperControllerTest.class)+".testUpdate\", \"svalue\": \"abc\", \"ivalue\": 3 }").getBytes(StandardCharsets.UTF_8)));
 			@SuppressWarnings("unchecked")
-			EntityHolder<TestMain> holder = (EntityHolder<TestMain>) operTestMain.operate(operContext, new EntityHolder<Object>(null, operContext.getCallerContext()));
+			EntityHolder<TestMain> holder = (EntityHolder<TestMain>) testMainOper.operate(operContext, new EntityHolder<Object>(null, operContext.getCallerContext()));
 			Assert.assertNotNull(holder);
 			Assert.assertEquals("abc", holder.getEntity().getSvalue());
 		}
@@ -138,14 +137,14 @@ public class ObjectOperControllerTest extends AppTenvObject
 		}
 	}
 
-	protected TestMain		createTestMain()
+	protected TestMain		createTestMain(String name)
 	{
 		ObjectOperContext presenter = createObjectOperContext("/", MapUtil.createHashMap("method", "create"));
 		try {
 			((DummyRequest)presenter.getRequest()).setMethod("POST");
-			((DummyRequest)presenter.getRequest()).setInputStream(new ByteArrayInputStream("{ \"svalue\": \"xyz\", \"ivalue\": 6 }".getBytes(StandardCharsets.UTF_8)));
+			((DummyRequest)presenter.getRequest()).setInputStream(new ByteArrayInputStream(("{ \"name\": \""+Dryuf.dotClassname(ObjectOperControllerTest.class)+"."+name+"\", \"svalue\": \"xyz\", \"ivalue\": 6 }").getBytes(StandardCharsets.UTF_8)));
 			@SuppressWarnings("unchecked")
-			EntityHolder<TestMain> obj = (EntityHolder<TestMain>) operTestMain.operate(presenter, new EntityHolder<Object>(null, presenter.getCallerContext()));
+			EntityHolder<TestMain> obj = (EntityHolder<TestMain>) testMainOper.operate(presenter, new EntityHolder<Object>(null, presenter.getCallerContext()));
 			Assert.assertNotNull(obj);
 			Assert.assertEquals("xyz", obj.getEntity().getSvalue());
 			return obj.getEntity();

@@ -32,7 +32,7 @@
  * @license	http://www.gnu.org/licenses/lgpl.txt GNU Lesser General Public License v3
  */
 
-package net.dryuf.dao.mysql.test;
+package net.dryuf.dao.test;
 
 import org.junit.runner.RunWith;
 
@@ -44,7 +44,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class TestEntOperTest extends net.dryuf.dao.test.common.AbstractTestEntOperBase
 {
-	public TestEntOperTest()
+	public				TestEntOperTest()
 	{
 	}
-};
+}

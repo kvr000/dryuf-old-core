@@ -63,11 +63,11 @@ import net.dryuf.tenv.AppTenvObject;
 public class TransactionalTestTest extends AppTenvObject
 {
 	@Inject
-	DbConfigProfileDao		dbConfigProfileDao;
+	protected DbConfigProfileDao	dbConfigProfileDao;
 	@Inject
-	DbConfigSectionDao		dbConfigSectionDao;
+	protected DbConfigSectionDao	dbConfigSectionDao;
 	@Inject
-	DbConfigEntryDao		dbConfigEntryDao;
+	protected DbConfigEntryDao	dbConfigEntryDao;
 
 	@PersistenceContext(unitName = "dryuf")
 	protected EntityManager		em;

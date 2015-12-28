@@ -34,6 +34,7 @@
 
 package net.dryuf.dao.test.common;
 
+import net.dryuf.core.Dryuf;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.Before;
@@ -52,33 +53,11 @@ public class AbstractTestEntOperBase extends java.lang.Object
 	{
 	}
 
-	public void			runSqlSafe(String sql)
-	{
-		try {
-			genericDryufDao.runNativeUpdate(sql);
-		}
-		catch (Exception ex) {
-		}
-	}
-
-	public void			runSql(String sql)
-	{
-		genericDryufDao.runNativeUpdate(sql);
-	}
-
-	@Before
-	public void			createStructure()
-	{
-//		runSqlSafe("DROP TABLE TestEnt");
-//		runSql("CREATE TABLE TestEnt (testId bigint NOT NULL, name varchar(32), uniq varchar(32), nonull varchar(32) NOT NULL DEFAULT '', PRIMARY KEY (testId), UNIQUE INDEX udx_uniq (uniq))");
-		runSql("DELETE FROM TestEnt");
-	}
-
 	@Test
 	public void			testCorrect() throws Exception
 	{
 		TestEnt te0 = new TestEnt();
-		te0.setTestId(1L);
+		te0.setName(Dryuf.dotClassname(getClass())+".testCorrect");
 		testEntDao.insert(te0);
 	}
 
@@ -86,18 +65,17 @@ public class AbstractTestEntOperBase extends java.lang.Object
 	public void			testDaoPrimaryKeyConstraint() throws Exception
 	{
 		TestEnt te0 = new TestEnt();
-		te0.setTestId(2L);
+		te0.setName(Dryuf.dotClassname(getClass())+".testDaoPrimaryKeyConstraint.0");
 		testEntDao.insert(te0);
 		TestEnt te1 = new TestEnt();
-		te1.setTestId(2L);
-		testEntDao.insert(te1);
+		genericDryufDao.runNativeUpdate("INSERT INTO TestEnt (testId, name, nonull) values ("+te0.getTestId()+", '"+Dryuf.dotClassname(getClass())+".testDaoPrimaryKeyConstraint.1"+"', 'a')");
 	}
 
 	@Test(expected = net.dryuf.dao.DaoBadNullConstraintException.class)
 	public void			testDaoBadNullConstraintException() throws Exception
 	{
 		TestEnt te0 = new TestEnt();
-		te0.setTestId(3L);
+		te0.setName(Dryuf.dotClassname(getClass())+".testDaoBadNullConstraintException");
 		te0.setNonull(null);
 		testEntDao.insert(te0);
 	}
@@ -106,13 +84,13 @@ public class AbstractTestEntOperBase extends java.lang.Object
 	public void			testDaoUniqueConstraintException() throws Exception
 	{
 		TestEnt te0 = new TestEnt();
-		te0.setTestId(4L);
+		te0.setName(Dryuf.dotClassname(getClass())+".testDaoUniqueConstraintException.0");
 		te0.setUniq("four");
 		testEntDao.insert(te0);
 		TestEnt te1 = new TestEnt();
-		te1.setTestId(5L);
+		te1.setName(Dryuf.dotClassname(getClass())+".testDaoUniqueConstraintException.1");
 		te1.setUniq("four");
-		testEntDao.insert(te1);
+		testEntDao.update(te1);
 	}
 
 	@Inject
