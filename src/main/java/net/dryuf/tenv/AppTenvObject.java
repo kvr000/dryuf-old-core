@@ -53,7 +53,7 @@ public class AppTenvObject extends net.dryuf.tenv.TenvObject implements net.dryu
 		return appContainer.createCallerContext();
 	}
 
-	AppContainer			appContainer;
+	protected AppContainer		appContainer;
 
 	public AppContainer		getAppContainer()
 	{

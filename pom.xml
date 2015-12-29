@@ -360,8 +360,6 @@
 				<configuration>
 					<forkMode>never</forkMode>
 					<parallel>none</parallel>
-					<threadCount>1</threadCount>
-					<perCoreThreadCount>false</perCoreThreadCount>
 					<!--
 					<parallel>methods</parallel>
 					<threadCount>2</threadCount>
