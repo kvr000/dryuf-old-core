@@ -74,7 +74,7 @@ public class JpaExceptionTranslateTest extends java.lang.Object
 		testMain.setSvalue(testMain.getName());
 		if (name.indexOf('\'') >= 0 || name.indexOf('\\') >= 0)
 			throw new IllegalArgumentException("unexpected value from test, identifier cannot contain ' or \\");
-		runSql("DELETE FROM TestMain t WHERE t.name = '"+name+"'");
+		runSql("DELETE FROM TestMain WHERE name = '"+name+"'");
 		testMainDao.insert(testMain);
 		testChildDao.removeByCompos(testMain.getTestId());
 		return testMain.getTestId();
