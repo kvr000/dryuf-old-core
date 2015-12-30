@@ -48,115 +48,111 @@ import net.dryuf.meta.ViewInfo;
 
 public interface ClassMeta<ET>
 {
-	public Object			convertField(CallerContext callerContext, FieldDef<?> fdef, String value);
+	Object				convertField(CallerContext callerContext, FieldDef<?> fdef, String value);
 
-	public String			getDataClassName();
+	String				getDataClassName();
 
-	public ET			instantiate();
+	ET				instantiate();
 
-	public boolean			canNew(CallerContext callerContext);
+	boolean				canNew(CallerContext callerContext);
 
-	public boolean			canDel(CallerContext callerContext);
+	boolean				canDel(CallerContext callerContext);
 
-	public boolean			hasCompos();
+	boolean				hasCompos();
 
-	public boolean			isPkEmbedded();
+	boolean				isPkEmbedded();
 
 	/**
 	 * @return
 	 * 	list of additional PK fields within
 	 */
-	public String[]			getAdditionalPkFields();
+	String[]			getAdditionalPkFields();
 
 	/**
 	 * Gets list of field definitions.
 	 */
-	public FieldDef<?>[]		getFields();
+	FieldDef<?>[]			getFields();
 
 	/**
 	 * Gets the field name of the key.
 	 */
-	public String			getRefName();
+	String				getRefName();
 
 	/**
 	 * Gets object key from the existing object.
 	 */
-	public Object			getEntityPkValue(ET entity);
+	Object				getEntityPkValue(ET entity);
 
 	/**
 	 * Sets object key.
 	 */
-	public void			setEntityPkValue(ET entity, Object value);
+	void				setEntityPkValue(ET entity, Object value);
 
-	public void			setComposKey(ET entity, Object composKey);
+	void				setComposKey(ET entity, Object composKey);
 
-	public Object			getComposKey(ET entity);
+	Object				getComposKey(ET entity);
 
-	public ActionDef[]		getActions();
+	ActionDef[]			getActions();
 
-	public FieldRoles		getFieldRoles(String name);
+	FieldRoles			getFieldRoles(String name);
 
-	public FieldDef<?>		getField(String name);
+	FieldDef<?>			getField(String name);
 
-	public Object			getEntityFieldValue(ET entity, String fieldName);
+	Object				getEntityFieldValue(ET entity, String fieldName);
 
-	public void			setEntityFieldValue(ET entity, String fieldName, Object value);
+	void				setEntityFieldValue(ET entity, String fieldName, Object value);
 
-	public FieldDef<?>		getPathField(String path);
+	FieldDef<?>			getPathField(String path);
 
-	public Object			getEntityPathValue(ET entity, String path);
+	Object				getEntityPathValue(ET entity, String path);
 
-	public void			setEntityPathValue(ET entity, String path, Object value);
+	void				setEntityPathValue(ET entity, String path, Object value);
 
-	public ActionDef		getAction(String name);
+	ActionDef			getAction(String name);
 
-	public RelationDef		getRelation(String name);
+	RelationDef			getRelation(String name);
 
-	public String			urlDisplayKey(CallerContext callerContext, ET entity);
+	String				urlDisplayKey(CallerContext callerContext, ET entity);
 
-	public String			urlPkEntityKey(CallerContext callerContext, Object pk);
+	String				urlPkEntityKey(CallerContext callerContext, Object pk);
 
-	public List<ActionDef>		getGlobalActionList(CallerContext callerContext);
+	List<ActionDef>			getGlobalActionList(CallerContext callerContext);
 
-	public List<ActionDef>		getObjectActionList(EntityHolder<ET> obj);
+	List<ActionDef>			getObjectActionList(EntityHolder<ET> obj);
 
-	public Class<ET>		getDataClass();
+	Class<ET>			getDataClass();
 
-	public String			getDataView();
+	String				getDataView();
 
-	public boolean			getEmbedded();
+	boolean				getEmbedded();
 
-	public ViewInfo			getViewInfo();
+	ViewInfo			getViewInfo();
 
-	public Class<?>			getPkClass();
+	Class<?>			getPkClass();
 
-	public String			getPkName();
+	String				getPkName();
 
-	public Class<?>			getComposClass();
+	Class<?>			getComposClass();
 
-	public Class<?>			getComposPkClass();
+	Class<?>			getComposPkClass();
 
-	public String			getComposPath();
+	String				getComposPath();
 
-	public FieldRoles		getEntityRoles();
+	FieldRoles			getEntityRoles();
 
-	public String			getDbSource();
+	String[]			getFieldOrder();
 
-	public String			getDbTable();
+	String[]			getSuggestFields();
 
-	public String[]			getFieldOrder();
+	String[]			getRefFields();
 
-	public String[]			getSuggestFields();
+	String[]			getDisplayKeys();
 
-	public String[]			getRefFields();
+	Map<String, RelationDef>	getRelations();
 
-	public String[]			getDisplayKeys();
+	FieldDef<?>			getPkFieldDef();
 
-	public Map<String, RelationDef> getRelations();
+	Map<String, FilterDef> 		getFilterDefsHash();
 
-	public FieldDef<?>		getPkFieldDef();
-
-	public Map<String, FilterDef> 	getFilterDefsHash();
-
-	public String			formatAssocType(int assocType);
+	String				formatAssocType(int assocType);
 }

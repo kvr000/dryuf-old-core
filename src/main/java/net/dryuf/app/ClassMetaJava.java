@@ -663,25 +663,13 @@ public class ClassMetaJava<ET> extends java.lang.Object implements ClassMeta<ET>
 	}
 
 	protected FieldDef<?>[]		fieldDefs;
+
 	protected Map<String, FieldDefImpl<?>> fieldDefsHash;
 
 	protected PKeyDef		pkeyDef;
 
-	protected String		dbSource;
-
-	public String			getDbSource()
-	{
-		return this.dbSource;
-	}
-
-	protected String		dbTable;
-
-	public String			getDbTable()
-	{
-		return this.dbTable;
-	}
-
 	protected ActionDef[]		actionDefs;
+
 	protected Map<String, ActionDef> actionDefsHash;
 
 	protected String[]		fieldOrder;
