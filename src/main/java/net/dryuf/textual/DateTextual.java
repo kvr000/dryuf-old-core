@@ -34,6 +34,9 @@
 
 package net.dryuf.textual;
 
+import java.util.TimeZone;
+
+import org.apache.commons.lang3.time.FastDateFormat;
 
 import net.dryuf.core.StringUtil;
 
@@ -64,7 +67,7 @@ public class DateTextual extends DateTimeBaseTextual
 	@SuppressWarnings("cast")
 	public String			format(java.lang.Long internal, String style)
 	{
-		return (new java.text.SimpleDateFormat("dd.MM.yyyy")).format(new java.util.Date(((java.lang.Long)internal)));
+		return (FastDateFormat.getInstance("dd.MM.yyyy", TimeZone.getTimeZone("UTC"))).format(new java.util.Date(((java.lang.Long)internal)));
 	}
 
 	@SuppressWarnings("deprecation")

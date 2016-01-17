@@ -39,6 +39,8 @@
 
 		<javax.mail.version>1.4.7</javax.mail.version>
 
+		<commons-lang3.version>3.4</commons-lang3.version>
+
 		<httpcomponents.version>4.5</httpcomponents.version>
 
 		<xmlapis.version>1.4.01</xmlapis.version>
@@ -538,6 +540,12 @@
 			<groupId>xml-apis</groupId>
 			<artifactId>xml-apis</artifactId>
 			<version>${xmlapis.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3.version}</version>
 		</dependency>
 
 		<dependency>
