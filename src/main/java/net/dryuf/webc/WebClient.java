@@ -39,6 +39,8 @@ import java.io.IOException;
 import java.lang.String;
 import java.lang.RuntimeException;
 
+import net.dryuf.net.util.UrlUtil;
+import org.apache.commons.lang3.ObjectUtils;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.ClientProtocolException;
@@ -61,7 +63,7 @@ public class WebClient extends java.lang.Object
 				urlBuilder.delete(urlBuilder.length()-1, urlBuilder.length());
 			}
 			for (Map.Entry<String, Object> param: params.entrySet()) {
-				urlBuilder.append("&").append(param.getKey()).append("=").append(param.getValue());
+				urlBuilder.append("&").append(UrlUtil.encodeUrl(param.getKey())).append("=").append(UrlUtil.encodeUrl(ObjectUtils.defaultIfNull(param.getValue(), "").toString()));
 			}
 			url = urlBuilder.toString();
 		}
