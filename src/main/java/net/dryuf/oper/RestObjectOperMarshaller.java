@@ -51,7 +51,6 @@ import net.dryuf.srvui.Request;
 import net.dryuf.validation.AccessValidationException;
 import net.dryuf.validation.DataValidationException;
 import net.dryuf.validation.UniqueValidationException;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import net.dryuf.core.CallerContext;

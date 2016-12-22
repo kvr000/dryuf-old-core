@@ -39,6 +39,8 @@ import java.io.IOException;
 import java.lang.String;
 import java.lang.RuntimeException;
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import net.dryuf.net.util.UrlUtil;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.http.HttpResponse;
@@ -47,7 +49,6 @@ import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClients;
-import org.codehaus.jackson.map.ObjectMapper;
 
 
 public class WebClient extends java.lang.Object
@@ -55,15 +56,19 @@ public class WebClient extends java.lang.Object
 	public String			prepareQuery(String url, Map<String, Object> params)
 	{
 		if (params != null && params.size() != 0) {
+			char separator = '\0';
 			StringBuilder urlBuilder = new StringBuilder(url);
 			if (url.indexOf('?') < 0) {
-				urlBuilder.append('?');
+				separator = '?';
 			}
-			else if (url.endsWith("&")) {
-				urlBuilder.delete(urlBuilder.length()-1, urlBuilder.length());
+			else if (!url.endsWith("&")) {
+				separator = '&';
 			}
 			for (Map.Entry<String, Object> param: params.entrySet()) {
-				urlBuilder.append("&").append(UrlUtil.encodeUrl(param.getKey())).append("=").append(UrlUtil.encodeUrl(ObjectUtils.defaultIfNull(param.getValue(), "").toString()));
+				if (separator != '\0')
+					urlBuilder.append(separator);
+				urlBuilder.append(UrlUtil.encodeUrl(param.getKey())).append("=").append(UrlUtil.encodeUrl(ObjectUtils.defaultIfNull(param.getValue(), "").toString()));
+				separator = '&';
 			}
 			url = urlBuilder.toString();
 		}
@@ -79,8 +84,7 @@ public class WebClient extends java.lang.Object
 			if (response.getStatusLine().getStatusCode() != HttpStatus.SC_OK) {
 				throw new RuntimeException("failed to run "+url+": "+response.getStatusLine());
 			}
-			ObjectMapper mapper = new ObjectMapper();
-			return mapper.readValue(response.getEntity().getContent(), clazz);
+			return objectMapper.readValue(response.getEntity().getContent(), clazz);
 		}
 		catch (ClientProtocolException ex) {
 			throw new RuntimeException(ex);
@@ -99,4 +103,7 @@ public class WebClient extends java.lang.Object
 	}
 
 	protected HttpClient		httpclient = HttpClients.createDefault();
+
+	protected static final ObjectMapper objectMapper = new ObjectMapper()
+			.enable(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, JsonParser.Feature.ALLOW_COMMENTS);
 }

@@ -35,8 +35,9 @@
 package net.dryuf.serialize.json;
 
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import net.dryuf.serialize.DataMarshaller;
-import org.codehaus.jackson.map.ObjectMapper;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -54,8 +55,7 @@ public class JacksonDataMarshaller extends java.lang.Object implements DataMarsh
 	@Override
 	public OutputStream		marshal(OutputStream stream, Object object) throws IOException
 	{
-		ObjectMapper mapper = new ObjectMapper();
-		mapper.writeValue(stream, object);
+		objectMapper.writeValue(stream, object);
 		return stream;
 
 	}
@@ -63,7 +63,9 @@ public class JacksonDataMarshaller extends java.lang.Object implements DataMarsh
 	@Override
 	public <T> T			unmarshal(InputStream stream, Class<T> clazz) throws IOException
 	{
-		ObjectMapper mapper = new ObjectMapper();
-		return mapper.readValue(stream, clazz);
+		return objectMapper.readValue(stream, clazz);
 	}
+
+	protected static final ObjectMapper objectMapper = new ObjectMapper()
+			.enable(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, JsonParser.Feature.ALLOW_COMMENTS);
 }
