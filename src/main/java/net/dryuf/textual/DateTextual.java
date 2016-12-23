@@ -37,6 +37,9 @@ package net.dryuf.textual;
 
 import net.dryuf.core.StringUtil;
 
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+
 public class DateTextual extends DateTimeBaseTextual
 {
 	public String			check(String text, String style)
@@ -64,7 +67,7 @@ public class DateTextual extends DateTimeBaseTextual
 	@SuppressWarnings("cast")
 	public String			format(java.lang.Long internal, String style)
 	{
-		return (new java.text.SimpleDateFormat("dd.MM.yyyy")).format(new java.util.Date(((java.lang.Long)internal)));
+		return getDateFormat().format(new java.util.Date(((java.lang.Long)internal)));
 	}
 
 	@SuppressWarnings("deprecation")
@@ -81,5 +84,12 @@ public class DateTextual extends DateTimeBaseTextual
 	protected String		getErrorMessage()
 	{
 		return callerContext.getUiContext().localize(DateTextual.class, "format dd.mm.yyyy required");
+	}
+
+	private SimpleDateFormat	getDateFormat()
+	{
+		SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+		format.setTimeZone(TimeZone.getTimeZone("UTC"));
+		return format;
 	}
 }
