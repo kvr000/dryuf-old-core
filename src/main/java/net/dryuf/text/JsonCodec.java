@@ -34,23 +34,27 @@
 
 package net.dryuf.text;
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 import java.io.StringWriter;
-import org.codehaus.jackson.map.ObjectMapper;
 
 
 public class JsonCodec extends java.lang.Object
 {
 	public static String		encode(Object value)
 	{
-		ObjectMapper mapper = new ObjectMapper();
 		try {
 			StringWriter writer = new StringWriter();
-			mapper.writeValue(writer, value);
+			objectMapper.writeValue(writer, value);
 			return writer.toString();
 		}
 		catch (IOException ex) {
 			throw new RuntimeException(ex);
 		}
 	}
-};
+
+	protected static final ObjectMapper objectMapper = new ObjectMapper()
+			.enable(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, JsonParser.Feature.ALLOW_COMMENTS);
+}
