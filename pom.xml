@@ -47,7 +47,7 @@
 
 		<netty.version>5.0.0.Alpha2</netty.version>
 
-		<jackson.version>2.8.5</jackson.version>
+		<jackson.version>2.11.0</jackson.version>
 		<icu4j.version>53.1</icu4j.version>
 
 		<tiles.version>2.1.3</tiles.version>
