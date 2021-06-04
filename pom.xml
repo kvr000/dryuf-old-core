@@ -39,7 +39,7 @@
 
 		<javax.mail.version>1.4.7</javax.mail.version>
 
-		<httpcomponents.version>4.5</httpcomponents.version>
+		<httpcomponents.version>4.5.13</httpcomponents.version>
 
 		<xmlapis.version>1.4.01</xmlapis.version>
 
