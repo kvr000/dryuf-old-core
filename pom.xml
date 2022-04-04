@@ -2,17 +2,17 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.dryuf</groupId>
-	<artifactId>dryuf-core</artifactId>
+	<artifactId>dryuf-old-core</artifactId>
 	<version>0.0.1</version>
-	<name>dryuf-core</name>
+	<name>dryuf-old-core</name>
 	<description>dryuf core</description>
 	<packaging>jar</packaging>
 
 	<properties>
 		<dryuf.version>0.0.1</dryuf.version>
-		<project.code>dryuf-core</project.code>
+		<project.code>dryuf-old-core</project.code>
 
-		<javac.version>1.8</javac.version>
+		<javac.version>8</javac.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
@@ -45,7 +45,7 @@
 
 		<xmlapis.version>1.4.01</xmlapis.version>
 
-		<guava.version>18.0</guava.version>
+		<guava.version>31.1-jre</guava.version>
 
 		<netty.version>5.0.0.Alpha2</netty.version>
 
@@ -462,18 +462,17 @@
 		</dependency>
 		-->
 		<dependency>
-			<groupId>com.sun</groupId>
-			<artifactId>tools</artifactId>
-			<version>1.7.0</version>
-			<systemPath>${java.home}/../lib/tools.jar</systemPath>
-			<scope>system</scope>
-		</dependency>
-		<dependency>
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
 			<version>1</version>
 		</dependency>
 		<!--
+		<dependency>
+			<groupId>javax.persistence</groupId>
+			<artifactId>javax.persistence-api</artifactId>
+			<version>2.2</version>
+		</dependency>
+
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
@@ -740,11 +739,6 @@
 			<version>${aspectj.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.3.2</version>
-		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-math3</artifactId>
