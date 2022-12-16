@@ -23,7 +23,7 @@
 		<exec-maven-plugin.version>1.4.0</exec-maven-plugin.version>
 		<dryuf-csv-localizer-maven-plugin.version>1.0.0</dryuf-csv-localizer-maven-plugin.version>
 
-		<spring.version>4.2.3.RELEASE</spring.version>
+		<spring.version>5.2.20.RELEASE</spring.version>
 		<spring.boot.version>1.2.1.RELEASE</spring.boot.version>
 		<spring.security.version>4.0.1.RELEASE</spring.security.version>
 		<openid4java.version>0.9.4.339</openid4java.version>
